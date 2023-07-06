@@ -1,12 +1,16 @@
 header {
   padding: 25px 0;
   box-shadow: 0px 3px 9px #d5d4d4;
-  position: static;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: $color-white;
   .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     .dk-nav {
       ul {
         display: flex;
