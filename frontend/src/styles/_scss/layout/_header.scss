@@ -30,12 +30,26 @@ header {
               &::after {
                 content: '';
                 position: absolute;
-                width: 80%;
+                width: 0%;
                 height: 2px;
                 background-color: $color-orange;
                 left: 50%;
                 bottom: -10px;
                 transform: translate(-50%, 0);
+                animation: growWidth 0.4s linear forwards;
+              }
+            }
+            &:hover {
+              &::after {
+                content: '';
+                position: absolute;
+                width: 0%;
+                height: 2px;
+                background-color: $color-orange;
+                left: 50%;
+                bottom: -10px;
+                transform: translate(-50%, 0);
+                animation: growWidth 0.4s linear forwards;
               }
             }
           }
