@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import Logo from '../../assets/images/logo.svg';
 
@@ -9,21 +9,25 @@ const Header = () => {
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
-            <div className="logo">
-              <img src={Logo} alt="Posteet" />
+            <div className="header-content">
+              <div className="logo">
+                <Link to="/">
+                  <img src={Logo} alt="Posteet" />
+                </Link>
+              </div>
+              <nav className="dk-nav">
+                <ul>
+                  <li>
+                    <NavLink to="/">Home</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/sign-up">Sign-up</NavLink>
+                    {' / '}
+                    <NavLink to="/log-in">Log-in</NavLink>
+                  </li>
+                </ul>
+              </nav>
             </div>
-            <nav className="dk-nav">
-              <ul>
-                <li>
-                  <NavLink to="/">Home</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/sign-up">Sign-up</NavLink>
-                  {'/'}
-                  <NavLink to="/log-in">Log-in</NavLink>
-                </li>
-              </ul>
-            </nav>
           </div>
         </div>
       </div>

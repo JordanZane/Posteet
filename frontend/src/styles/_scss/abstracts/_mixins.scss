@@ -1,0 +1,114 @@
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "small" {
+    @media (max-width: 767px) {
+      @content;
+    }
+  }
+     @if $breakpoint == "ipad" {
+    @media (max-width: 768px) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "medium" {
+    @media (max-width: 992px) {
+      @content;
+    }
+  }
+  @else if $breakpoint == "break" {
+    @media (max-width: 999px) {
+      @content;
+    }
+  }
+  @else if $breakpoint == "large" {
+    @media (max-width: 1200px) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "xlarge" {
+    @media (max-width: 1400px) {
+      @content;
+    }
+  }
+}
+
+
+
+
+
+/// Transition
+@mixin transition($v1){
+		-webkit-transition: all $v1 ease-in-out;
+		   -moz-transition: all $v1 ease-in-out;
+		     -o-transition: all $v1 ease-in-out;
+		        transition: all $v1 ease-in-out;
+}
+
+@mixin translate($v1, $v2){
+		-webkit-transform: translate($v1, $v2);
+		   -moz-transform: translate($v1, $v2);
+		     -o-transform: translate($v1, $v2);
+		        transform: translate($v1, $v2);
+}
+
+@mixin scale($v1){
+		-webkit-transform: scale($v1);
+		   -moz-transform: scale($v1);
+		     -o-transform: scale($v1);
+		        transform: scale($v1);
+}
+/// Bouton
+
+@mixin btn($color,$color-text){
+    font-size:16px;
+    background: $color;
+    padding: 10px 25px;
+    text-align: center;
+    display: inline-block;
+    margin: 10px 0px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: $color-text;
+    border-radius: 10px;
+    text-decoration: none;
+    @include transition(0.3s);
+  &:hover{
+
+  }
+}
+
+//stroke
+
+ @mixin hori-stroke($color,$position,$weight,$width){
+     position: relative;
+     padding-bottom: 30px;
+     &:before{
+         position: absolute;
+         bottom: 0px;
+         height: $weight;
+         width: $width;
+         color: $color;
+         @if $position == left {
+            left: 0;
+         }
+         @else if $position == center{
+             left: 50%;
+             transform: translate(-50%,0);
+         }
+     }  
+}
+
+
+@mixin gradient-linear($color1,$color2){
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f7e054+0,d4b93b+100 */
+  background: $color1; /* Old browsers */
+  background: -moz-linear-gradient(top, $color1 0%, $color2 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, $color1 0%,$color2 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, $color1 0%,$color2 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color1', endColorstr='$color2',GradientType=0 ); /* IE6-9 */
+     
+}
+    
+
+
