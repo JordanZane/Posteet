@@ -10,8 +10,9 @@ body {
     margin-top: 50px;
     margin-bottom: 30px;
   }
-.section{
-min-height: 100vh;}
+  .section {
+    margin: 300px 0;
+  }
   h1 {
     font-family: $font2;
     font-weight: 700;
@@ -37,7 +38,7 @@ min-height: 100vh;}
     color: $color-orange;
     position: relative;
     margin-bottom: 30px;
-    &::after{
+    &::after {
       content: '';
       position: absolute;
       width: 50px;
@@ -90,9 +91,9 @@ min-height: 100vh;}
       }
     }
   }
-img{
-  max-width: 100%;
-}
+  img {
+    max-width: 100%;
+  }
   ul {
     margin: 20px 0;
     li {
@@ -102,7 +103,7 @@ img{
   }
 }
 
-.btn-style{
+.btn-style {
   color: $color-orange;
   background-color: $color-white;
   border: 1px solid $color-orange;
@@ -113,7 +114,7 @@ img{
   border-radius: 9px;
   position: relative;
   z-index: 1;
-  &::after{
+  &::after {
     content: '';
     position: absolute;
     right: -14px;
@@ -126,14 +127,13 @@ img{
     z-index: -1;
     @include transition(0.2s);
     pointer-events: none;
-
   }
-  &:hover{
+  &:hover {
     color: $color-white;
     background-color: $color-orange;
-    &::after{
+    &::after {
       right: 0;
-      bottom: 0;    
+      bottom: 0;
     }
   }
 }
@@ -158,6 +158,3 @@ img{
   a {
   }
 }
-
-
-

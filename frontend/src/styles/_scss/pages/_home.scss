@@ -1,28 +1,25 @@
 .home-page {
   position: relative;
-  top: 235px;
   z-index: 0;
-  .even-section{
-    .text-content{
+  .even-section {
+    .text-content {
       padding-left: 50px;
     }
   }
-  .odd-section{
-    .text-content{
+  .odd-section {
+    .text-content {
       padding-right: 50px;
     }
   }
-  .about{
-      p span{
-        color: $color-orange;
-        font-weight: bold;
-      }
-      .btn-container{
-        margin-top: 30px;
-      }
+  .about {
+    p span {
+      color: $color-orange;
+      font-weight: bold;
     }
-  .productivity{
-    
+    .btn-container {
+      margin-top: 30px;
+    }
   }
+  .productivity {
   }
-
+}
