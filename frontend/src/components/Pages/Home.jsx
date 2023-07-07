@@ -28,6 +28,9 @@ const Home = () => {
             </div>
           </div>
         </section>
+        <section className="productivity section">
+          <div className="container"></div>
+        </section>
       </main>
     </div>
   );
