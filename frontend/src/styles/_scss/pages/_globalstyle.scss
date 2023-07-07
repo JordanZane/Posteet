@@ -10,7 +10,9 @@ body {
     margin-top: 50px;
     margin-bottom: 30px;
   }
-
+.section{
+  margin: 100px 0;
+}
   h1 {
     font-family: $font2;
     font-weight: 700;
@@ -32,8 +34,19 @@ body {
     font-size: 48px;
     font-weight: 700;
     line-height: 52px;
-    padding: 32px 0 25px;
+    padding: 0 0 15px 0;
     color: $color-orange;
+    position: relative;
+    margin-bottom: 30px;
+    &::after{
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 3px;
+      left: 0;
+      bottom: 0;
+      background-color: $color-orange;
+    }
     @include respond-to('medium') {
       font-size: 25px;
     }
@@ -68,8 +81,8 @@ body {
 
   p {
     font-family: $font1;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 20px;
+    line-height: 28px;
     margin: 10px 0;
     a {
       text-decoration: underline;
@@ -78,12 +91,50 @@ body {
       }
     }
   }
-
+img{
+  max-width: 100%;
+}
   ul {
     margin: 20px 0;
     li {
       margin: 10px 0;
       list-style-position: inside;
+    }
+  }
+}
+
+.btn-style{
+  color: $color-orange;
+  background-color: $color-white;
+  border: 1px solid $color-orange;
+  font-size: 22px;
+  text-decoration: none;
+  padding: 6px 12px;
+  @include transition(0.2s);
+  border-radius: 9px;
+  position: relative;
+  z-index: 1;
+  &::after{
+    content: '';
+    position: absolute;
+    right: -14px;
+    bottom: -14px;
+    width: 100%;
+    height: 100%;
+    background-color: $color-orange;
+    border: 1px solid $color-orange;
+    border-radius: 9px;
+    z-index: -1;
+    @include transition(0.2s);
+    pointer-events: none;
+
+  }
+  &:hover{
+    color: $color-white;
+    background-color: $color-orange;
+    &::after{
+      right: 0;
+      bottom: 0;    
     }
   }
 }
@@ -108,3 +159,6 @@ body {
   a {
   }
 }
+
+
+
