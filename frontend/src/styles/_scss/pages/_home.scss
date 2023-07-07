@@ -2,6 +2,16 @@
   position: relative;
   top: 135px;
   z-index: 0;
+  .even-section{
+    .text-content{
+      padding-left: 50px;
+    }
+  }
+  .odd-section{
+    .text-content{
+      padding-right: 50px;
+    }
+  }
   .about{
       p span{
         color: $color-orange;
@@ -11,5 +21,8 @@
         margin-top: 30px;
       }
     }
+  .productivity{
+    
+  }
   }
 

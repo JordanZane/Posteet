@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div className="home-page">
       <main>
-        <section className="about section">
+        <section className="about section odd-section">
           <div className="container">
             <div className="row">
               <div className="col-lg-6 text-content">
@@ -28,8 +28,25 @@ const Home = () => {
             </div>
           </div>
         </section>
+<<<<<<< HEAD
         <section className="productivity section">
           <div className="container"></div>
+=======
+        <section className="productivity section even-section">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-6 img-container">
+              <img src={aboutImg} alt="Posteet - about" />
+
+              </div>
+              <div className="col-lg-6 text-content">
+              <h2>Boost your productivity</h2>
+              <p>With Posteet, you can easily register an account and dive into a world of efficient note-taking. Whether it's jotting down quick reminders, brainstorming ideas, or organizing your tasks, 
+              Posteet empowers you to create, edit, and prioritize your notes with utmost convenience.</p>
+              </div>
+            </div>
+          </div>
+>>>>>>> develop
         </section>
       </main>
     </div>
