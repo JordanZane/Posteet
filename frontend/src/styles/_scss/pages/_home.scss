@@ -1,5 +1,15 @@
 .home-page {
   position: relative;
-  top: 150px;
+  top: 135px;
   z-index: 0;
-}
+  .about{
+      p span{
+        color: $color-orange;
+        font-weight: bold;
+      }
+      .btn-container{
+        margin-top: 30px;
+      }
+    }
+  }
+
