@@ -34,4 +34,26 @@
       }
     }
   }
+  .contact {
+    padding: 50px 0;
+    background-color: #ffebd4;
+    .text-content {
+      p.subtitle {
+        font-weight: 700;
+      }
+      form {
+        margin-top: 35px;
+        display: flex;
+        flex-direction: column;
+        input {
+          margin-bottom: 20px;
+        }
+        .btn-container {
+          margin-top: 15px;
+          display: flex;
+          justify-content: flex-end;
+        }
+      }
+    }
+  }
 }

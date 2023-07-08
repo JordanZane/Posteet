@@ -90,6 +90,41 @@ const Home = () => {
             </div>
           </div>
         </section>
+        <section className="contact section">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-6 text-content">
+                <h2>Contact</h2>
+                <p className="subtitle">
+                  You have questions, suggestions, or need further assistance ?
+                </p>
+                <p>
+                  Feel free to reach out to us for any additional information or
+                  inquiries. Simply fill out the form below. We value your
+                  feedback and strive to provide the best possible experience
+                  for our users.
+                </p>
+                <form>
+                  <label htmlFor="email">Email*</label>
+                  <input type="email" id="email" name="email" />
+                  <label htmlFor="message">Message*</label>
+                  <textarea
+                    name="message"
+                    id="message"
+                    cols="18"
+                    rows="6"
+                  ></textarea>
+                  <div className="btn-container ">
+                    <button className="btn" type="submit">
+                      Send
+                    </button>
+                  </div>
+                  <p>*Required fields</p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
     </div>
   );
