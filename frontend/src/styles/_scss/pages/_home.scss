@@ -20,6 +20,18 @@
       margin-top: 30px;
     }
   }
-  .productivity {
+  .management {
+    .slick-slider {
+      .slick-dots {
+        button::before {
+          font-size: 18px;
+        }
+        .slick-active {
+          button::before {
+            color: $color-orange;
+          }
+        }
+      }
+    }
   }
 }
