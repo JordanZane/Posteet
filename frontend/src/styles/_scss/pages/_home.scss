@@ -25,18 +25,22 @@
       .slick-dots {
         button::before {
           font-size: 18px;
+          color: $color-orange;
         }
         .slick-active {
           button::before {
             color: $color-orange;
           }
         }
+        button:hover {
+          color: $color-orange;
+        }
       }
     }
   }
   .contact {
     padding: 50px 0;
-    background-color: #ffebd4;
+    background-color: $color-orange-2;
     .text-content {
       p.subtitle {
         font-weight: 700;
