@@ -1,3 +1,11 @@
-footer{
-  
+footer {
+  background-color: $color-orange;
+  text-align: center;
+  color: $color-white;
+  p.content {
+    font-size: 16px;
+  }
+  a {
+    color: $color-white;
+  }
 }
