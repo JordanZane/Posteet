@@ -153,23 +153,41 @@ body {
   }
 }
 
-.seperator-right {
+.form-container {
+  max-width: 650px;
+  margin: auto;
+  border: 3px solid $color-orange;
+  padding: 20px;
+  border-radius: 9px;
   position: relative;
-  padding-right: 15px;
-  &:before {
-    background: $color-white;
-    height: 100%;
-    width: 1px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    content: '';
+  h2 {
+    color: $color-grey;
+    margin: auto;
+    font-size: 2em;
+    text-align: center;
+    &::after {
+      background: unset;
+    }
   }
-}
-
-.button_back {
-  margin-top: 40px;
-  text-align: center;
-  a {
+  form {
+    display: flex;
+    flex-direction: column;
+    input {
+      border: 1px solid $color-orange;
+      margin-bottom: 15px;
+    }
+    .btn-container {
+      display: flex;
+      justify-content: center;
+    }
+  }
+  p {
+    text-align: center;
+  }
+  .required {
+    position: absolute;
+    right: 15px;
+    bottom: 0px;
+    font-size: 16px;
   }
 }
