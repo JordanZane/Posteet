@@ -12,8 +12,8 @@ const signupForm = () => {
                 <h2>Sign-up</h2>
 
                 <form>
-                  <label htmlFor="name">Name*</label>
-                  <input type="text" name="name" id="name" />
+                  <label htmlFor="username">Username*</label>
+                  <input type="text" name="username" id="username" />
                   <label htmlFor="email">Email*</label>
                   <input type="email" name="email" id="email" />
                   <label htmlFor="password">Password*</label>
