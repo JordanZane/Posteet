@@ -1,5 +1,4 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 
 const loginForm = () => {
   return (
@@ -8,7 +7,7 @@ const loginForm = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <div className="form-container">
+              <div className="form-container" id="login-form">
                 <h2>Log-in</h2>
                 <form>
                   <label htmlFor="username">Username*</label>
@@ -20,10 +19,16 @@ const loginForm = () => {
                   </div>
                 </form>
                 <p>
-                  Forget Your password ?{' '}
-                  <NavLink to="/reset-password">Reset password</NavLink>
+                  Forget Your password ? <a href="mailto:">Reset password</a>
                 </p>
                 <p className="required">*Required</p>
+              </div>
+              <div className="form-container" id="reset-pw-form-container">
+                <h2>Reset password</h2>
+                <form>
+                  <label htmlFor="email">Email*</label>
+                  <input type="email" name="email" id="email" />
+                </form>
               </div>
             </div>
           </div>

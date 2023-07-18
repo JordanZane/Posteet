@@ -5,6 +5,7 @@ import Footer from './components/Footer/Footer';
 import Home from './components/Pages/Home';
 import SignupForm from './components/Forms/signupForm';
 import LoginForm from './components/Forms/loginForm';
+import ResetPasswordForm from './components/Forms/ResetPasswordForm';
 import './styles/_scss/styles.scss';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/sign-up" element={<SignupForm />}></Route>
         <Route path="/log-in" element={<LoginForm />}></Route>
+        <Route path="/reset-password" element={<ResetPasswordForm />}></Route>
       </Routes>
       <Footer />
     </>
