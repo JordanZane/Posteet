@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 
 import Logo from '../../assets/images/logo.svg';
 
-const Header = () => {
+const Header = ({ isLogged }) => {
   return (
     <header>
       <div className="container">
@@ -20,11 +20,22 @@ const Header = () => {
                   <li>
                     <NavLink to="/">Home</NavLink>
                   </li>
-                  <li>
-                    <NavLink to="/sign-up">Sign-up</NavLink>
-                    {' / '}
-                    <NavLink to="/log-in">Log-in</NavLink>
-                  </li>
+                  {isLogged ? (
+                    <>
+                      <li>
+                        <NavLink to="/dashboard">Dashboard</NavLink>
+                      </li>
+                      <li>
+                        <i class="fa-solid fa-user"></i>
+                      </li>
+                    </>
+                  ) : (
+                    <li>
+                      <NavLink to="/sign-up">Sign-up</NavLink>
+                      {' / '}
+                      <NavLink to="/log-in">Log-in</NavLink>
+                    </li>
+                  )}
                 </ul>
               </nav>
             </div>
