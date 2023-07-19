@@ -7,9 +7,22 @@ const DashBoard = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <form>
-                <label htmlFor="addnote">Add a note +</label>
-                <input type="text" id="addnote" name="addnote" />
+              <h1>
+                Add a note{' '}
+                <div className="btn-round">
+                  <i className="fa-solid fa-plus"></i>
+                </div>
+              </h1>
+              <form id="addNote-form">
+                <label htmlFor="title">Title</label>
+                <input type="text" id="title" name="title" />
+                <label htmlFor="content">Content</label>
+                <textarea
+                  name="content"
+                  id="content"
+                  cols="30"
+                  rows="10"
+                ></textarea>
               </form>
             </div>
           </div>
@@ -19,7 +32,7 @@ const DashBoard = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <h2>- Current notes</h2>
+              <h2>Current notes</h2>
               <div className="current-notes-container notes-container"></div>
             </div>
           </div>
@@ -29,7 +42,7 @@ const DashBoard = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <h2>- Deleted notes</h2>
+              <h2>Deleted notes</h2>
               <div className="deleted-notes-container notes-container"></div>
             </div>
           </div>
