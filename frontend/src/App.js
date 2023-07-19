@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
@@ -10,13 +11,19 @@ import DashBoard from './components/Pages/DashBoard';
 import './styles/_scss/styles.scss';
 
 function App() {
+  const [isLogged, setIsLogged] = useState(true);
+
   return (
     <>
-      <Header />
+      <Header isLogged={isLogged} />
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/sign-up" element={<SignupForm />}></Route>
-        <Route path="/log-in" element={<LoginForm />}></Route>
+        <Route
+          path="/log-in"
+          element={<LoginForm />}
+          setIsLogged={setIsLogged}
+        ></Route>
         <Route path="/reset-password" element={<ResetPasswordForm />}></Route>
         <Route path="/dashboard" element={<DashBoard />}></Route>
       </Routes>
