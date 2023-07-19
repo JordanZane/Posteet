@@ -153,6 +153,18 @@ body {
   }
 }
 
+.btn-round {
+  border: unset;
+  background: $color-orange;
+  color: $color-white;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 0.8em;
+  padding: 5px;
+  display: flex;
+  cursor: pointer;
+}
+
 .form-container {
   max-width: 650px;
   margin: auto;

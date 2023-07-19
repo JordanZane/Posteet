@@ -1,2 +1,14 @@
 .dashboard-page {
+  .section {
+    margin: 200px 0;
+  }
+  h1 {
+    color: $color-orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .btn-round {
+      margin-left: 6px;
+    }
+  }
 }
