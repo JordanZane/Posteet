@@ -26,7 +26,13 @@ const Header = ({ isLogged }) => {
                         <NavLink to="/dashboard">Dashboard</NavLink>
                       </li>
                       <li>
-                        <i class="fa-solid fa-user"></i>
+                        <button>
+                          <i className="fa-solid fa-user"></i>
+                        </button>
+                        <ul className="subnav">
+                          <li>My account</li>
+                          <li>Dark Mode</li>
+                        </ul>
                       </li>
                     </>
                   ) : (

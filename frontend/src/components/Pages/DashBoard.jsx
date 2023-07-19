@@ -15,7 +15,6 @@ const DashBoard = () => {
           </div>
         </div>
       </section>
-
       <section className="current-notes section">
         <div className="container">
           <div className="row">
