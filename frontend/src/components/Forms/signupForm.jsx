@@ -10,7 +10,6 @@ const signupForm = () => {
             <div className="col-lg-12">
               <div className="form-container">
                 <h2>Sign-up</h2>
-
                 <form>
                   <label htmlFor="username">Username*</label>
                   <input type="text" name="username" id="username" />
