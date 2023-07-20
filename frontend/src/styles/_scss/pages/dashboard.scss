@@ -11,4 +11,23 @@
       margin-left: 6px;
     }
   }
+  #addNote-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid $color-orange;
+    max-width: 500px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    padding: 20px;
+    opacity: 0;
+    input {
+      margin-bottom: 15px;
+    }
+    input,
+    textarea {
+      border: 1px solid $color-orange;
+    }
+  }
 }

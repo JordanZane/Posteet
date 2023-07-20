@@ -21,7 +21,7 @@ const DashBoard = () => {
                   name="content"
                   id="content"
                   cols="30"
-                  rows="10"
+                  rows="6"
                 ></textarea>
               </form>
             </div>
