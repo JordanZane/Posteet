@@ -11,7 +11,7 @@ import DashBoard from './components/Pages/DashBoard';
 import './styles/_scss/styles.scss';
 
 function App() {
-  const [isLogged, setIsLogged] = useState(true);
+  const [isLogged, setIsLogged] = useState(false);
 
   return (
     <>
