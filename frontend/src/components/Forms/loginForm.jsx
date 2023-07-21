@@ -11,6 +11,29 @@ const LoginForm = () => {
     setFormData((prevdata) => ({ ...prevdata, [name]: value }));
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    fetch('http://localhost:4200/login', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(formdata),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setFormData({
+          username: '',
+          password: '',
+        });
+      })
+      .catch((error) => {
+        console.log('Error :', error);
+      });
+  };
+
   return (
     <div className="login-page">
       <div className="section">
@@ -19,11 +42,21 @@ const LoginForm = () => {
             <div className="col-lg-12">
               <div className="form-container" id="login-form">
                 <h2>Log-in</h2>
-                <form>
+                <form onSubmit={handleSubmit}>
                   <label htmlFor="username">Username*</label>
-                  <input type="text" name="username" id="username" />
+                  <input
+                    type="text"
+                    name="username"
+                    id="username"
+                    onChange={handleChange}
+                  />
                   <label htmlFor="password">Password*</label>
-                  <input type="password" name="password" id="password" />
+                  <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    onChange={handleChange}
+                  />
                   <div className="btn-container">
                     <input className="btn" type="submit" value="Log-in" />
                   </div>
