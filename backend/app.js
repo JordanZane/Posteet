@@ -1,16 +1,17 @@
+const dotenv = require('dotenv');
+dotenv.config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 
-const userRoute = require('./routes/signup');
+const userRouteSign = require('./routes/signup');
+const userRouteLog = require('./routes/login');
 
 mongoose
-  .connect(
-    'mongodb+srv://jzanetti1:nQ3HphXbwhgD5qz7@posteet-prod-cluster.a58lolh.mongodb.net/',
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
@@ -30,7 +31,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/signup', userRoute);
+app.use('/signup', userRouteSign);
+app.use('/login', userRouteLog);
 
 module.exports = app;
-/*Test*/
