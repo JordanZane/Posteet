@@ -1,6 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const loginForm = () => {
+const LoginForm = () => {
+  const [formdata, setFormData] = useState({
+    username: '',
+    password: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevdata) => ({ ...prevdata, [name]: value }));
+  };
+
   return (
     <div className="login-page">
       <div className="section">
@@ -38,4 +48,4 @@ const loginForm = () => {
   );
 };
 
-export default loginForm;
+export default LoginForm;
