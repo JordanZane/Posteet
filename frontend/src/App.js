@@ -21,8 +21,7 @@ function App() {
         <Route path="/sign-up" element={<SignupForm />}></Route>
         <Route
           path="/log-in"
-          element={<LoginForm />}
-          setIsLogged={setIsLogged}
+          element={<LoginForm setIsLogged={setIsLogged} />}
         ></Route>
         <Route path="/reset-password" element={<ResetPasswordForm />}></Route>
         <Route path="/dashboard" element={<DashBoard />}></Route>

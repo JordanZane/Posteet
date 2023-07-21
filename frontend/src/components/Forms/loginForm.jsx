@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
 
-const LoginForm = () => {
+const LoginForm = ({ setIsLogged }) => {
+  const navigate = useNavigate();
   const [formdata, setFormData] = useState({
     username: '',
     password: '',
@@ -21,16 +23,26 @@ const LoginForm = () => {
       },
       body: JSON.stringify(formdata),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          alert('Combinaison identifiant/mot de passe incorrecte');
+
+          throw new Error('Paire identifiant / mot de passe incorrecte');
+        }
+        return response.json();
+      })
       .then((data) => {
         console.log(data);
         setFormData({
           username: '',
           password: '',
         });
+        setIsLogged(true);
+        navigate('/dashboard');
       })
       .catch((error) => {
         console.log('Error :', error);
+        setIsLogged(false);
       });
   };
 
