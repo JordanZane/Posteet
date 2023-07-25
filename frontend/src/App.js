@@ -24,7 +24,7 @@ function App() {
 
   return (
     <>
-      <Header isLogged={isLogged} />
+      <Header isLogged={isLogged} setIsLogged={setIsLogged} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/sign-up" element={<SignupForm />} />

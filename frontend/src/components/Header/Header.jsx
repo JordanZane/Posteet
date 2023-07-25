@@ -1,9 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import styled from 'styled-components';
 
 import Logo from '../../assets/images/logo.svg';
 
-const Header = ({ isLogged }) => {
+const Header = ({ isLogged, setIsLogged }) => {
+  const [showConfirmation, setShowConfirmation] = useState(false);
+
+  const handleLogout = () => {
+    setShowConfirmation(true);
+  };
+
+  const ConfirmationModal = styled.div`
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+  `;
+
+  const LogoutButton = styled.button`
+    background-color: red;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  `;
+
   return (
     <header>
       <div className="container">
@@ -32,6 +60,9 @@ const Header = ({ isLogged }) => {
                         <ul className="subnav">
                           <li>My account</li>
                           <li>Dark Mode</li>
+                          <li>
+                            <button onClick={handleLogout}>Déconnexion</button>
+                          </li>
                         </ul>
                       </li>
                     </>
@@ -48,6 +79,15 @@ const Header = ({ isLogged }) => {
           </div>
         </div>
       </div>
+      {showConfirmation && (
+        <ConfirmationModal>
+          <p>Êtes-vous sûr de vouloir vous déconnecter ?</p>
+          <div>
+            <LogoutButton>Oui</LogoutButton>
+            <LogoutButton>Non</LogoutButton>
+          </div>
+        </ConfirmationModal>
+      )}
     </header>
   );
 };
