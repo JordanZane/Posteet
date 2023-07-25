@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
@@ -11,28 +11,34 @@ import DashBoard from './components/Pages/DashBoard';
 import './styles/_scss/styles.scss';
 
 function App() {
-  const [isLogged, setIsLogged] = useState(false);
+  const [isLogged, setIsLogged] = useState(null);
 
   useEffect(() => {
-    const userIsLogged = localStorage.getItem('isLogged');
-    if (userIsLogged === 'true') {
-      setIsLogged(true);
-    }
+    const storedIsLogged = localStorage.getItem('isLogged');
+    setIsLogged(storedIsLogged === 'true');
   }, []);
+
+  if (isLogged === null) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
       <Header isLogged={isLogged} />
       <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/sign-up" element={<SignupForm />}></Route>
+        <Route path="/" element={<Home />} />
+        <Route path="/sign-up" element={<SignupForm />} />
         <Route
           path="/log-in"
           element={<LoginForm setIsLogged={setIsLogged} />}
-        ></Route>
-        <Route path="/reset-password" element={<ResetPasswordForm />}></Route>
-        <Route path="/dashboard" element={<DashBoard />}></Route>
-        <Route path="*" element={<Home />}></Route>
+        />
+        <Route path="/reset-password" element={<ResetPasswordForm />} />
+        {isLogged ? (
+          <Route path="/dashboard" element={<DashBoard />} />
+        ) : (
+          <Route path="/dashboard" element={<Navigate to="/" replace />} />
+        )}
+        <Route path="*" element={<Home />} />
       </Routes>
       <Footer />
     </>
