@@ -9,7 +9,6 @@ import Logo from '../../assets/images/logo.svg';
 
 const Header = ({ isLogged, setIsLogged }) => {
   const [showConfirmation, setShowConfirmation] = useState(false);
-  const [showSubNav, setShowSubNav] = useState(false);
   const navigate = useNavigate();
 
   const HandleSubNav = () => {
