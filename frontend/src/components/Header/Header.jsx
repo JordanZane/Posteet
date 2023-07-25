@@ -1,36 +1,30 @@
 import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import styled from 'styled-components';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import {
+  ConfirmationModal,
+  LogoutButton,
+} from '../StyledComponents/LogoutConfirm';
 
 import Logo from '../../assets/images/logo.svg';
 
 const Header = ({ isLogged, setIsLogged }) => {
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     setShowConfirmation(true);
   };
 
-  const ConfirmationModal = styled.div`
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-  `;
+  const handleConfirmLogout = () => {
+    setIsLogged(false);
+    setShowConfirmation(false);
+    localStorage.setItem('isLogged', false);
+    navigate('/');
+  };
 
-  const LogoutButton = styled.button`
-    background-color: red;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-  `;
+  const handleCancelLougout = () => {
+    setShowConfirmation(false);
+  };
 
   return (
     <header>
@@ -83,8 +77,8 @@ const Header = ({ isLogged, setIsLogged }) => {
         <ConfirmationModal>
           <p>Êtes-vous sûr de vouloir vous déconnecter ?</p>
           <div>
-            <LogoutButton>Oui</LogoutButton>
-            <LogoutButton>Non</LogoutButton>
+            <LogoutButton onClick={handleConfirmLogout}>Oui</LogoutButton>
+            <LogoutButton onClick={handleCancelLougout}>Non</LogoutButton>
           </div>
         </ConfirmationModal>
       )}
