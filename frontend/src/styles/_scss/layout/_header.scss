@@ -74,7 +74,6 @@ header {
     align-items: center;
     background-color: $color-white;
     border: 1px solid $color-orange;
-    padding: 8px !important;
     right: -48px;
     @include transition(0.2s);
     &.active {
@@ -82,7 +81,18 @@ header {
       bottom: -160px;
     }
     li {
-      margin-right: 0 !important;
+      padding: 8px 6px;
+      margin: 0 !important;
+      width: 100%;
+      border-bottom: 1px solid $color-orange;
+      text-align: center;
+      &:last-child {
+        border-bottom: unset;
+      }
+      button {
+        border-radius: 0;
+        background-color: $color-red;
+      }
     }
   }
 }
