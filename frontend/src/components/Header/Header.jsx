@@ -9,7 +9,12 @@ import Logo from '../../assets/images/logo.svg';
 
 const Header = ({ isLogged, setIsLogged }) => {
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [showSubNav, setShowSubNav] = useState(false);
   const navigate = useNavigate();
+
+  const HandleSubNav = () => {
+    document.getElementById('subnav').classList.toggle('active');
+  };
 
   const handleLogout = () => {
     setShowConfirmation(true);
@@ -48,10 +53,10 @@ const Header = ({ isLogged, setIsLogged }) => {
                         <NavLink to="/dashboard">Dashboard</NavLink>
                       </li>
                       <li>
-                        <button>
+                        <button onClick={HandleSubNav}>
                           <i className="fa-solid fa-user"></i>
                         </button>
-                        <ul className="subnav">
+                        <ul id="subnav">
                           <li>My account</li>
                           <li>Dark Mode</li>
                           <li>
