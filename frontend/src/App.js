@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
@@ -12,6 +12,13 @@ import './styles/_scss/styles.scss';
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
+
+  useEffect(() => {
+    const userIsLogged = localStorage.getItem('isLogged');
+    if (userIsLogged === 'true') {
+      setIsLogged(true);
+    }
+  }, []);
 
   return (
     <>

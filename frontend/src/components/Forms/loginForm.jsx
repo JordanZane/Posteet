@@ -37,6 +37,7 @@ const LoginForm = ({ setIsLogged }) => {
           password: '',
         });
         setIsLogged(true);
+        localStorage.setItem('isLogged', true);
         navigate('/dashboard');
       })
       .catch((error) => {
