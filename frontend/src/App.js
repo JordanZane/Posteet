@@ -25,6 +25,7 @@ function App() {
         ></Route>
         <Route path="/reset-password" element={<ResetPasswordForm />}></Route>
         <Route path="/dashboard" element={<DashBoard />}></Route>
+        <Route path="*" element={<Home />}></Route>
       </Routes>
       <Footer />
     </>

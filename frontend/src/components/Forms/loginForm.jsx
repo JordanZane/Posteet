@@ -25,8 +25,7 @@ const LoginForm = ({ setIsLogged }) => {
     })
       .then((response) => {
         if (!response.ok) {
-          alert('Combinaison identifiant/mot de passe incorrecte');
-
+          alert('Paire identifiant / mot de passe incorrecte');
           throw new Error('Paire identifiant / mot de passe incorrecte');
         }
         return response.json();
