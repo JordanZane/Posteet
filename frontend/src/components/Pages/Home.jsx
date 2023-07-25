@@ -6,7 +6,7 @@ import 'slick-carousel/slick/slick-theme.css';
 
 import aboutImg from '../../assets/images/about-img.png';
 
-const Home = () => {
+const Home = ({ isLogged }) => {
   const sliderSettings = {
     dots: true,
     infinite: true,
@@ -29,9 +29,15 @@ const Home = () => {
                   organize your digital post-it notes.
                 </p>
                 <div className="btn-container">
-                  <Link to="/sign-up" className="btn-style">
-                    Sign-up for free
-                  </Link>
+                  {isLogged ? (
+                    <Link to="/dashboard" className="btn-style">
+                      Go to your dashboard
+                    </Link>
+                  ) : (
+                    <Link to="/sign-up" className="btn-style">
+                      Sign-up for free
+                    </Link>
+                  )}
                 </div>
               </div>
               <div className="col-lg-6 img-container">
