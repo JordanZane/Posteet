@@ -56,7 +56,9 @@ const Header = ({ isLogged, setIsLogged }) => {
                           <i className="fa-solid fa-user"></i>
                         </button>
                         <ul id="subnav">
-                          <li>My account</li>
+                          <li>
+                            <Link to="/my-account">My account</Link>{' '}
+                          </li>
                           <li>Dark Mode</li>
                           <li>
                             <button onClick={handleLogout}>Déconnexion</button>

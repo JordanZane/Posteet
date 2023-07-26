@@ -8,6 +8,7 @@ import SignupForm from './components/Forms/signupForm';
 import LoginForm from './components/Forms/loginForm';
 import ResetPasswordForm from './components/Forms/ResetPasswordForm';
 import DashBoard from './components/Pages/DashBoard';
+import Account from './components/Pages/Account';
 import './styles/_scss/styles.scss';
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
         ) : (
           <Route path="/dashboard" element={<Navigate to="/" replace />} />
         )}
+        <Route path="/my-account" element={<Account />} />
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />
