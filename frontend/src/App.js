@@ -39,7 +39,7 @@ function App() {
         ) : (
           <Route path="/dashboard" element={<Navigate to="/" replace />} />
         )}
-        <Route path="/my-account" element={<Account />} />
+        <Route path="/my-account/:id" element={<Account />} />
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />
