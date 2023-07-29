@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
+
 import {
   ConfirmationModal,
   LogoutButton,
 } from '../StyledComponents/LogoutConfirm';
-
 import Logo from '../../assets/images/logo.svg';
 
 const Header = ({ isLogged, setIsLogged }) => {
   const [showConfirmation, setShowConfirmation] = useState(false);
+
   const navigate = useNavigate();
+  const userId = localStorage.getItem('userId');
 
   const HandleSubNav = () => {
     document.getElementById('subnav').classList.toggle('active');
@@ -49,7 +51,7 @@ const Header = ({ isLogged, setIsLogged }) => {
                   {isLogged ? (
                     <>
                       <li>
-                        <NavLink to="/dashboard">Dashboard</NavLink>
+                        <NavLink to={`/dashboard/${userId}`}>Dashboard</NavLink>
                       </li>
                       <li>
                         <button onClick={HandleSubNav}>
@@ -57,7 +59,7 @@ const Header = ({ isLogged, setIsLogged }) => {
                         </button>
                         <ul id="subnav">
                           <li>
-                            <Link to="/my-account">My account</Link>{' '}
+                            <Link to={`/my-account/${userId}`}>My account</Link>
                           </li>
                           <li>Dark Mode</li>
                           <li>

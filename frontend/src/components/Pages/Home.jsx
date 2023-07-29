@@ -17,6 +17,8 @@ const Home = ({ isLogged }) => {
     autoplaySpeed: 3000,
   };
 
+  const userId = localStorage.getItem('userId');
+
   return (
     <div className="home-page">
       <main>
@@ -32,7 +34,7 @@ const Home = ({ isLogged }) => {
                 </p>
                 <div className="btn-container">
                   {isLogged ? (
-                    <Link to="/dashboard" className="btn-style">
+                    <Link to={`/dashboard/${userId}`} className="btn-style">
                       Go to your dashboard
                     </Link>
                   ) : (

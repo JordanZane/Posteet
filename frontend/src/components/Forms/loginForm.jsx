@@ -38,7 +38,8 @@ const LoginForm = ({ setIsLogged }) => {
         });
         setIsLogged(true);
         localStorage.setItem('isLogged', true);
-        navigate('/dashboard');
+        localStorage.setItem('userId', data.userId);
+        navigate(`/dashboard/${data.userId}`);
       })
       .catch((error) => {
         console.log('Error :', error);

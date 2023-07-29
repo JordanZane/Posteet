@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 
 const Account = () => {
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
-  const { id } = useParams();
+  const userId = localStorage.getItem('userId');
 
   useEffect(() => {
     const getUser = async () => {
-      const token = sessionStorage.getItem('token');
+      const token = localStorage.getItem('token');
       const headers = {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       };
 
-      fetch(`http://localhost:4200/users/${id}`, {
+      fetch(`http://localhost:4200/users/${userId}`, {
         method: 'GET',
         headers: headers,
       })
@@ -37,7 +36,7 @@ const Account = () => {
         });
     };
     getUser();
-  }, [id]);
+  }, [userId]);
 
   return (
     <div className="account-page">
