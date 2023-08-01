@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 
 const userRouteSign = require('./routes/signup');
 const userRouteLog = require('./routes/login');
+const usersRoute = require('./routes/users');
 
 mongoose
   .connect(process.env.MONGODB_URI, {
@@ -33,5 +34,6 @@ app.use((req, res, next) => {
 
 app.use('/signup', userRouteSign);
 app.use('/login', userRouteLog);
+app.use('/users', usersRoute);
 
 module.exports = app;
