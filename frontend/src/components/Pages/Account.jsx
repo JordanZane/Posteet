@@ -50,13 +50,15 @@ const Account = () => {
     document.getElementById('account-content').classList.toggle('active');
   };
 
-  const handleCloseResetPwForm = () => {
+  const handleCloseResetPwForm = (e) => {
+    e.preventDefault();
     setShowResetPwform(false);
     document.getElementById('reset-pw-form').classList.toggle('active');
     document.getElementById('account-content').classList.toggle('active');
   };
 
   const resetPassword = () => {
+    console.log('resetPassword called');
     const token = localStorage.getItem('token');
     const headers = {
       'Content-Type': 'application/json',
@@ -71,7 +73,22 @@ const Account = () => {
       method: 'POST',
       headers: headers,
       body: JSON.stringify(data),
-    }).then((response) => {});
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert('Mot de passe modifié avec succès');
+        } else {
+          alert(
+            'Problème lors de la modification du mot de passe. Vérifiez vos saisies'
+          );
+        }
+      })
+      .catch((error) => {
+        console.log('Erreur lors de la modification du mot de passe : ', error);
+        alert(
+          'Problème lors de la modification du mot de passe. Vérifiez vos saisies'
+        );
+      });
   };
 
   return (
@@ -93,7 +110,7 @@ const Account = () => {
                   </button>
                   <button>Supprimer le compte</button>
                 </div>
-                <div
+                <form
                   className="form-container"
                   id="reset-pw-form"
                   onSubmit={resetPassword}
@@ -123,11 +140,11 @@ const Account = () => {
                     name="confirmnewpassword"
                     id="confirmnewpassword"
                     value={confirmNewPassword}
-                    onChange={setConfirmNewPassword}
+                    onChange={(e) => setConfirmNewPassword(e.target.value)}
                   />
                   <button type="submit">Confirmer</button>
                   <button onClick={handleCloseResetPwForm}>Annuler</button>
-                </div>
+                </form>
               </div>
             </div>
           </div>
