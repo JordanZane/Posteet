@@ -25,8 +25,8 @@ const Account = () => {
           }
         })
         .then((data) => {
-          setUserName(data.users.username);
-          setUserEmail(data.users.email);
+          setUserName(data.user.username);
+          setUserEmail(data.user.email);
         })
         .catch((error) => {
           console.log(
@@ -44,10 +44,11 @@ const Account = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <div className="account-content">
-                <h1>My account</h1>
-                <p>Username : {userName} </p>
-                <p>Email : {userEmail}</p>
+              <div className="account-content form-container">
+                <h2>Mon Compte</h2>
+                <p>Nom d'utilisateur : {userName} </p>
+                <p>E-mail : {userEmail}</p>
+                <p>Changer de mot de passe</p>
                 <p>Supprimer le compte</p>
               </div>
             </div>
