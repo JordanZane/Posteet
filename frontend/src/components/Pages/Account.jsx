@@ -48,8 +48,8 @@ const Account = () => {
                 <h2>Mon Compte</h2>
                 <p>Nom d'utilisateur : {userName} </p>
                 <p>E-mail : {userEmail}</p>
-                <p>Changer de mot de passe</p>
-                <p>Supprimer le compte</p>
+                <button>Changer de mot de passe</button>
+                <button>Supprimer le compte</button>
               </div>
             </div>
           </div>
