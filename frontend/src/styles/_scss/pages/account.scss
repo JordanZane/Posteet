@@ -1,5 +1,5 @@
 .account-page {
-  .account-content {
+  .form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,6 +16,28 @@
         background-color: $color-white;
         color: $color-red;
       }
+    }
+  }
+  #account-content {
+    &.active {
+      display: none;
+    }
+  }
+}
+
+#reset-pw-form {
+  display: none;
+  &.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  button {
+    background-color: $color-green;
+    border: 1px solid $color-green;
+    &:hover {
+      color: $color-green;
+      background: none;
     }
   }
 }
