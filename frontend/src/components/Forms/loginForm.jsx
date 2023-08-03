@@ -31,7 +31,6 @@ const LoginForm = ({ setIsLogged }) => {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         setFormData({
           username: '',
           password: '',

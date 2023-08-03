@@ -82,8 +82,6 @@ const Account = () => {
       return;
     }
 
-    console.log('reset-pw called');
-
     fetch(`http://localhost:4200/users/reset-pw/${userId}`, {
       method: 'POST',
       headers: headers,
