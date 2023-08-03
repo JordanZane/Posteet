@@ -39,7 +39,14 @@ function App() {
         ) : (
           <Route path="/dashboard" element={<Navigate to="/" replace />} />
         )}
-        <Route path="/my-account/:userId" element={<Account />} />
+        {isLogged ? (
+          <Route path="/my-account/:userId" element={<Account />} />
+        ) : (
+          <Route
+            path="/my-account/:userId"
+            element={<Navigate to="/" replace />}
+          />
+        )}
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />

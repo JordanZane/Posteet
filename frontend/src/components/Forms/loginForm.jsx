@@ -37,8 +37,9 @@ const LoginForm = ({ setIsLogged }) => {
           password: '',
         });
         setIsLogged(true);
-        localStorage.setItem('isLogged', true);
-        localStorage.setItem('userId', data.userId);
+        sessionStorage.setItem('isLogged', true);
+        sessionStorage.setItem('userId', data.userId);
+        sessionStorage.setItem('token', data.token);
         navigate(`/dashboard/${data.userId}`);
       })
       .catch((error) => {

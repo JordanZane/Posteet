@@ -9,11 +9,10 @@ const Account = () => {
 
   const [showResetPwForm, setShowResetPwform] = useState(false);
 
-  const userId = localStorage.getItem('userId');
-
   useEffect(() => {
     const getUser = async () => {
-      const token = localStorage.getItem('token');
+      const userId = sessionStorage.getItem('userId');
+      const token = sessionStorage.getItem('token');
       const headers = {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
@@ -42,7 +41,7 @@ const Account = () => {
         });
     };
     getUser();
-  }, [userId]);
+  }, []);
 
   const handleShowResetPwForm = () => {
     setShowResetPwform(true);
@@ -57,19 +56,35 @@ const Account = () => {
     document.getElementById('account-content').classList.toggle('active');
   };
 
-  const resetPassword = () => {
-    console.log('resetPassword called');
-    const token = localStorage.getItem('token');
+  const resetPassword = (e) => {
+    const userId = sessionStorage.getItem('userId');
+
+    e.preventDefault();
+    const token = sessionStorage.getItem('token');
     const headers = {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     };
 
     const data = {
+      password: password,
       newPassword: newPassword,
+      confirmNewPassword: confirmNewPassword,
     };
 
-    fetch('http://localhost:4200/reset-pw', {
+    if (newPassword !== confirmNewPassword) {
+      alert('Les mots de passe ne correspondent pas');
+      return;
+    }
+
+    if (!password || !newPassword || !confirmNewPassword) {
+      alert('Tout les champs doivent être remplis');
+      return;
+    }
+
+    console.log('reset-pw called');
+
+    fetch(`http://localhost:4200/users/reset-pw/${userId}`, {
       method: 'POST',
       headers: headers,
       body: JSON.stringify(data),
