@@ -82,7 +82,6 @@ exports.resetPassword = (req, res, next) => {
         if (!isPasswordValid) {
           console.log('Mot de passe invalide');
           res.status(401).json({ message: 'Mot de passe invalide' });
-          return;
         } else {
           bcrypt.hash(newPassword, 10).then((hashedNewPassword) => {
             user.password = hashedNewPassword;
