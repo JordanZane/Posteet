@@ -71,7 +71,30 @@ exports.getUserInfos = (req, res, next) => {
     });
 };
 
-exports.resetPassword = (res, req, next) => {
+exports.resetPassword = (req, res, next) => {
   console.log('reset-pw called backend');
   const userId = req.params.userId;
+  const { password, newPassword } = req.body;
+  User.findById(userId)
+    .then((user) => {
+      console.log('User found:', user);
+      bcrypt.compare(password, user.password).then((isPasswordValid) => {
+        if (!isPasswordValid) {
+          console.log('Mot de passe invalide');
+          res.status(401).json({ message: 'Mot de passe invalide' });
+          return;
+        } else {
+          bcrypt.hash(newPassword, 10).then((hashedNewPassword) => {
+            user.password = hashedNewPassword;
+            user.save().then(() => {
+              console.log('Mot de passe modifié');
+              res.status(200).json({ message: 'Mot de passe modifié' });
+            });
+          });
+        }
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({ error });
+    });
 };

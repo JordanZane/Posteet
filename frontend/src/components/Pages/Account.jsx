@@ -7,8 +7,6 @@ const Account = () => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
 
-  const [showResetPwForm, setShowResetPwform] = useState(false);
-
   useEffect(() => {
     const getUser = async () => {
       const userId = sessionStorage.getItem('userId');
@@ -44,14 +42,12 @@ const Account = () => {
   }, []);
 
   const handleShowResetPwForm = () => {
-    setShowResetPwform(true);
     document.getElementById('reset-pw-form').classList.toggle('active');
     document.getElementById('account-content').classList.toggle('active');
   };
 
   const handleCloseResetPwForm = (e) => {
     e.preventDefault();
-    setShowResetPwform(false);
     document.getElementById('reset-pw-form').classList.toggle('active');
     document.getElementById('account-content').classList.toggle('active');
   };
