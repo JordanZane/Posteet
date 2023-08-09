@@ -97,3 +97,7 @@ exports.resetPassword = (req, res, next) => {
       res.status(500).json({ error });
     });
 };
+
+exports.deleteAccount = (req, res, next) => {
+  console.log('Delete account route called');
+};

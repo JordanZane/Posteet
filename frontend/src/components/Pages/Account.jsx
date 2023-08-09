@@ -183,15 +183,14 @@ const Account = () => {
                 >
                   <h2>Supprimer le compte</h2>
                   <label htmlFor="password">Mot de passe : </label>
-                  <input type="password" name="password" id="password" />
-                  <label htmlFor="confirmPassword">
-                    Confirmer le mot de passe :
-                  </label>
                   <input
-                    type="confirmPassword"
-                    name="confirmPassword"
-                    id="confirmPassword"
+                    type="password"
+                    name="password"
+                    id="password"
+                    value={setPassword}
+                    onChange={(e) => setPassword(e.target.value)}
                   />
+
                   <div className="btn-container">
                     <button type="submit">Confirmer</button>
                     <button onClick={cancelDeleteAccountForm}>Annuler</button>

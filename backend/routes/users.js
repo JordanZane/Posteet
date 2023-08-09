@@ -5,5 +5,6 @@ const auth = require('../middlewares/auth');
 
 router.get('/:userId', auth, userCtrl.getUserInfos);
 router.post('/reset-pw/:userId', auth, userCtrl.resetPassword);
+router.delete('/delete-account/:userId', auth, userCtrl.deleteAccount);
 
 module.exports = router;
