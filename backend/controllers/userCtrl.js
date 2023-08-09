@@ -100,4 +100,19 @@ exports.resetPassword = (req, res, next) => {
 
 exports.deleteAccount = (req, res, next) => {
   console.log('Delete account route called');
+  const userId = req.params.userId;
+  const { password } = req.body;
+  User.findById(userId).then((user) => {
+    bcrypt.compare(password, user.password).then((isPasswordValid) => {
+      if (!isPasswordValid) {
+        console.log('Mot de passe invalide');
+        res.status(401).json({ message: 'Mot de passe invalide' });
+      } else {
+        console.log('User effacé');
+        User.findByIdAndRemove(userId).then(() => {
+          res.status(200).json({ message: 'Compte supprimé avec succés' });
+        });
+      }
+    });
+  });
 };

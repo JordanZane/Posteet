@@ -35,12 +35,18 @@ function App() {
         />
         <Route path="/reset-password" element={<ResetPasswordForm />} />
         {isLogged ? (
-          <Route path="/dashboard/:userId" element={<DashBoard />} />
+          <Route
+            path="/dashboard/:userId"
+            element={<DashBoard setIsLogged={setIsLogged} />}
+          />
         ) : (
           <Route path="/dashboard" element={<Navigate to="/" replace />} />
         )}
         {isLogged ? (
-          <Route path="/my-account/:userId" element={<Account />} />
+          <Route
+            path="/my-account/:userId"
+            element={<Account setIsLogged={setIsLogged} />}
+          />
         ) : (
           <Route
             path="/my-account/:userId"

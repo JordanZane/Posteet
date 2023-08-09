@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const Account = () => {
+const Account = ({ setIsLogged }) => {
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [password, setPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getUser = async () => {
@@ -113,6 +115,37 @@ const Account = () => {
 
   const deleteAccount = (e) => {
     e.preventDefault();
+    const userId = sessionStorage.getItem('userId');
+    const token = sessionStorage.getItem('token');
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    };
+
+    const data = {
+      password: password,
+    };
+
+    fetch(`http://localhost:4200/users/delete-account/${userId}`, {
+      method: 'DELETE',
+      headers: headers,
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert('Compte supprimé');
+          setIsLogged(false);
+          sessionStorage.setItem('isLogged', false);
+          sessionStorage.removeItem('token');
+          sessionStorage.removeItem('userId');
+          navigate('/');
+        } else {
+          alert('Mot de passe incorrecte');
+        }
+      })
+      .catch((error) => {
+        console.log('Erreur : ', error);
+      });
   };
 
   return (
@@ -187,7 +220,7 @@ const Account = () => {
                     type="password"
                     name="password"
                     id="password"
-                    value={setPassword}
+                    value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
 
