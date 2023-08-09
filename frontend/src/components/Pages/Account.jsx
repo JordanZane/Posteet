@@ -53,9 +53,8 @@ const Account = () => {
   };
 
   const resetPassword = (e) => {
-    const userId = sessionStorage.getItem('userId');
-
     e.preventDefault();
+    const userId = sessionStorage.getItem('userId');
     const token = sessionStorage.getItem('token');
     const headers = {
       'Content-Type': 'application/json',
@@ -100,6 +99,22 @@ const Account = () => {
       });
   };
 
+  const ShowDeleteAccountForm = (e) => {
+    e.preventDefault();
+    document.getElementById('account-content').classList.toggle('active');
+    document.getElementById('delete-account-form').classList.toggle('active');
+  };
+
+  const cancelDeleteAccountForm = (e) => {
+    e.preventDefault();
+    document.getElementById('account-content').classList.toggle('active');
+    document.getElementById('delete-account-form').classList.toggle('active');
+  };
+
+  const deleteAccount = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <>
       <div className="account-page">
@@ -114,10 +129,14 @@ const Account = () => {
                   <h2>Mon Compte</h2>
                   <p>Nom d'utilisateur : {userName} </p>
                   <p>E-mail : {userEmail}</p>
-                  <button onClick={handleShowResetPwForm}>
-                    Changer de mot de passe
-                  </button>
-                  <button>Supprimer le compte</button>
+                  <div className="btn-container">
+                    <button onClick={handleShowResetPwForm}>
+                      Changer de mot de passe
+                    </button>
+                    <button onClick={ShowDeleteAccountForm}>
+                      Supprimer le compte
+                    </button>
+                  </div>
                 </div>
                 <form
                   className="form-container"
@@ -151,8 +170,32 @@ const Account = () => {
                     value={confirmNewPassword}
                     onChange={(e) => setConfirmNewPassword(e.target.value)}
                   />
-                  <button type="submit">Confirmer</button>
-                  <button onClick={handleCloseResetPwForm}>Annuler</button>
+                  <div className="btn-container">
+                    <button type="submit">Confirmer</button>
+                    <button onClick={handleCloseResetPwForm}>Annuler</button>
+                  </div>
+                </form>
+                <form
+                  action=""
+                  className="form-container"
+                  id="delete-account-form"
+                  onSubmit={deleteAccount}
+                >
+                  <h2>Supprimer le compte</h2>
+                  <label htmlFor="password">Mot de passe : </label>
+                  <input type="password" name="password" id="password" />
+                  <label htmlFor="confirmPassword">
+                    Confirmer le mot de passe :
+                  </label>
+                  <input
+                    type="confirmPassword"
+                    name="confirmPassword"
+                    id="confirmPassword"
+                  />
+                  <div className="btn-container">
+                    <button type="submit">Confirmer</button>
+                    <button onClick={cancelDeleteAccountForm}>Annuler</button>
+                  </div>
                 </form>
               </div>
             </div>
