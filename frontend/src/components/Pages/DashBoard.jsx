@@ -5,13 +5,20 @@ const DashBoard = () => {
   const [titleNote, setTitleNote] = useState('');
   const [contentNote, setContentNote] = useState('');
 
-  const handleAddNoteForm = () => {
-    document.getElementById('add-note-form').classList.add('active');
+  const handleAddNoteForm = (e) => {
+    e.preventDefault();
+    document.getElementById('add-note-form').classList.toggle('active');
+    document.getElementById('notes-container').classList.toggle('active');
+  };
+
+  const createNote = (e) => {
+    e.preventDefault();
+    console.log('Create note function called');
   };
 
   return (
     <div className="dashboard-page">
-      <div id="notes-container">
+      <div id="notes-container" className="active">
         <section className="section">
           <div className="container">
             <div className="row">
@@ -76,6 +83,8 @@ const DashBoard = () => {
             value={contentNote}
             onChange={(e) => setContentNote(e.target.value)}
           />
+          <button onClick={createNote}>Ok</button>
+          <button onClick={handleAddNoteForm}>Cancel</button>
         </form>
       </div>
     </div>
