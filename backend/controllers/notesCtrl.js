@@ -11,3 +11,24 @@ exports.getUserNotes = (req, res, next) => {
       res.status(500).json({ error });
     });
 };
+
+exports.createNote = (req, res, next) => {
+  console.log('Create note route called');
+  const { title, content } = req.body;
+  const userId = req.auth.userId;
+  const note = new Note({
+    title,
+    content,
+    user: userId,
+  });
+  note
+    .save()
+    .then((newNote) => {
+      res.status(201).json({ note: newNote });
+    })
+    .catch((error) => {
+      res
+        .status(500)
+        .json({ message: 'Erreur lors de la création de la note : ', error });
+    });
+};
