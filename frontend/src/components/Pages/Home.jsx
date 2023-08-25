@@ -17,7 +17,7 @@ const Home = ({ isLogged }) => {
     autoplaySpeed: 3000,
   };
 
-  const userId = sessionStorage.getItem('userId');
+  const userId = localStorage.getItem('userId');
 
   return (
     <div className="home-page">

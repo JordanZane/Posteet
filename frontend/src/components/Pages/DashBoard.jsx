@@ -15,8 +15,8 @@ const DashBoard = () => {
     e.preventDefault();
     console.log('Create note function called');
 
-    const userId = sessionStorage.getItem('userId');
-    const token = sessionStorage.getItem('token');
+    const userId = localStorage.getItem('userId');
+    const token = localStorage.getItem('token');
     const headers = {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
@@ -37,6 +37,10 @@ const DashBoard = () => {
         if (response.ok) {
           console.log('Note créer');
           alert('Note créer');
+          setTitleNote('');
+          setContentNote('');
+          document.getElementById('add-note-form').classList.toggle('active');
+          document.getElementById('notes-container').classList.toggle('active');
         } else {
           console.log('Erreur lors de la création de la note');
           alert('Erreur lors de la création de la note');

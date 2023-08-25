@@ -11,7 +11,7 @@ const Header = ({ isLogged, setIsLogged }) => {
   const [showConfirmation, setShowConfirmation] = useState(false);
 
   const navigate = useNavigate();
-  const userId = sessionStorage.getItem('userId');
+  const userId = localStorage.getItem('userId');
 
   const HandleSubNav = () => {
     document.getElementById('subnav').classList.toggle('active');
@@ -24,9 +24,9 @@ const Header = ({ isLogged, setIsLogged }) => {
   const handleConfirmLogout = () => {
     setIsLogged(false);
     setShowConfirmation(false);
-    sessionStorage.setItem('isLogged', false);
-    sessionStorage.removeItem('token');
-    sessionStorage.removeItem('userId');
+    localStorage.setItem('isLogged', false);
+    localStorage.removeItem('token');
+    localStorage.removeItem('userId');
     navigate('/');
   };
 

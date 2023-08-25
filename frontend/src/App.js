@@ -12,16 +12,12 @@ import Account from './components/Pages/Account';
 import './styles/_scss/styles.scss';
 
 function App() {
-  const [isLogged, setIsLogged] = useState(null);
+  const [isLogged, setIsLogged] = useState(false);
 
   useEffect(() => {
-    const storedIsLogged = localStorage.getItem('isLogged');
-    setIsLogged(storedIsLogged === 'true');
+    const storedIsLogged = localStorage.getItem('isLogged') === 'true';
+    setIsLogged(storedIsLogged);
   }, []);
-
-  if (isLogged === null) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <>

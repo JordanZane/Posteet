@@ -11,8 +11,8 @@ const Account = ({ setIsLogged }) => {
 
   useEffect(() => {
     const getUser = async () => {
-      const userId = sessionStorage.getItem('userId');
-      const token = sessionStorage.getItem('token');
+      const userId = localStorage.getItem('userId');
+      const token = localStorage.getItem('token');
       const headers = {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
@@ -56,8 +56,8 @@ const Account = ({ setIsLogged }) => {
 
   const resetPassword = (e) => {
     e.preventDefault();
-    const userId = sessionStorage.getItem('userId');
-    const token = sessionStorage.getItem('token');
+    const userId = localStorage.getItem('userId');
+    const token = localStorage.getItem('token');
     const headers = {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
@@ -115,8 +115,8 @@ const Account = ({ setIsLogged }) => {
 
   const deleteAccount = (e) => {
     e.preventDefault();
-    const userId = sessionStorage.getItem('userId');
-    const token = sessionStorage.getItem('token');
+    const userId = localStorage.getItem('userId');
+    const token = localStorage.getItem('token');
     const headers = {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
@@ -135,9 +135,9 @@ const Account = ({ setIsLogged }) => {
         if (response.ok) {
           alert('Compte supprimé');
           setIsLogged(false);
-          sessionStorage.setItem('isLogged', false);
-          sessionStorage.removeItem('token');
-          sessionStorage.removeItem('userId');
+          localStorage.setItem('isLogged', false);
+          localStorage.removeItem('token');
+          localStorage.removeItem('userId');
           navigate('/');
         } else {
           alert('Mot de passe incorrecte');
