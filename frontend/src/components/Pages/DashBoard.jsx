@@ -14,6 +14,37 @@ const DashBoard = () => {
   const createNote = (e) => {
     e.preventDefault();
     console.log('Create note function called');
+
+    const userId = sessionStorage.getItem('userId');
+    const token = sessionStorage.getItem('token');
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    };
+
+    const data = {
+      titleNote: titleNote,
+      contentNote: contentNote,
+    };
+
+    fetch(`http://localhost:4200/notes/${userId}`, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log('Note créer');
+          alert('Note créer');
+        } else {
+          console.log('Erreur lors de la création de la note');
+          alert('Erreur lors de la création de la note');
+        }
+      })
+      .catch((error) => {
+        console.log('Erreur lors de la création de la note', error);
+        alert('Erreur lors de la création de la note');
+      });
   };
 
   return (

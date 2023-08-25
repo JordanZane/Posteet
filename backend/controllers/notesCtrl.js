@@ -14,11 +14,11 @@ exports.getUserNotes = (req, res, next) => {
 
 exports.createNote = (req, res, next) => {
   console.log('Create note route called');
-  const { title, content } = req.body;
-  const userId = req.params.id;
+  const userId = req.params.userId;
+  const { titleNote, contentNote } = req.body;
   const note = new Note({
-    title,
-    content,
+    titleNote,
+    contentNote,
     user: userId,
   });
   note
@@ -27,6 +27,8 @@ exports.createNote = (req, res, next) => {
       res.status(201).json({ note: newNote });
     })
     .catch((error) => {
+      console.error("Erreur lors de l'enregistrement de la note : ", error);
+
       res.status(500).json({
         message: 'Erreur lors de la création de la note : ',
         error: error,
