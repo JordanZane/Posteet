@@ -25,6 +25,7 @@ const DashBoard = () => {
     const data = {
       titleNote: titleNote,
       contentNote: contentNote,
+      user: userId,
     };
 
     fetch(`http://localhost:4200/notes/${userId}`, {
