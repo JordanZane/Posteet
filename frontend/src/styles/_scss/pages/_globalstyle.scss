@@ -159,6 +159,14 @@ body {
       color: $color-red;
     }
   }
+  &.btn-green {
+    background-color: $color-green;
+    border: 1px solid $color-green;
+    &:hover {
+      color: $color-green;
+      background: none;
+    }
+  }
 }
 
 .btn-round {

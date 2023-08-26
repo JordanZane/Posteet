@@ -12,19 +12,7 @@
         margin-right: 15px;
       }
     }
-    button {
-      display: block;
-      background-color: $color-red;
-      border: 1px solid $color-red;
-      color: $color-white;
-      font-size: 18px;
-      margin: 10px 0;
-      @include transition(0.3s);
-      &:hover {
-        background-color: $color-white;
-        color: $color-red;
-      }
-    }
+
     input {
       margin-bottom: 15px;
     }
@@ -56,13 +44,5 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  button {
-    background-color: $color-green;
-    border: 1px solid $color-green;
-    &:hover {
-      color: $color-green;
-      background: none;
-    }
   }
 }

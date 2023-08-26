@@ -204,8 +204,15 @@ const Account = ({ setIsLogged }) => {
                     onChange={(e) => setConfirmNewPassword(e.target.value)}
                   />
                   <div className="btn-container">
-                    <button type="submit">Confirmer</button>
-                    <button onClick={handleCloseResetPwForm}>Annuler</button>
+                    <button className="btn btn-green" type="submit">
+                      Confirmer
+                    </button>
+                    <button
+                      className="btn btn-red"
+                      onClick={handleCloseResetPwForm}
+                    >
+                      Annuler
+                    </button>
                   </div>
                 </form>
                 <form
