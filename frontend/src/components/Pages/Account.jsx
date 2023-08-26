@@ -163,10 +163,10 @@ const Account = ({ setIsLogged }) => {
                   <p>Nom d'utilisateur : {userName} </p>
                   <p>E-mail : {userEmail}</p>
                   <div className="btn-container">
-                    <button onClick={handleShowResetPwForm}>
+                    <button className="btn" onClick={handleShowResetPwForm}>
                       Changer de mot de passe
                     </button>
-                    <button onClick={ShowDeleteAccountForm}>
+                    <button className="btn" onClick={ShowDeleteAccountForm}>
                       Supprimer le compte
                     </button>
                   </div>
@@ -232,8 +232,15 @@ const Account = ({ setIsLogged }) => {
                   />
 
                   <div className="btn-container">
-                    <button type="submit">Confirmer</button>
-                    <button onClick={cancelDeleteAccountForm}>Annuler</button>
+                    <button className="btn btn-green" type="submit">
+                      Confirmer
+                    </button>
+                    <button
+                      className="btn btn-red"
+                      onClick={cancelDeleteAccountForm}
+                    >
+                      Annuler
+                    </button>
                   </div>
                 </form>
               </div>

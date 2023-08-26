@@ -66,7 +66,7 @@ const DashBoard = () => {
             <div className="row">
               <div className="col-lg-12">
                 <h1>
-                  Add a note{' '}
+                  Create your note{' '}
                   <div className="btn-round" onClick={handleAddNoteForm}>
                     <i className="fa-solid fa-plus"></i>
                   </div>
@@ -119,15 +119,17 @@ const DashBoard = () => {
             onChange={(e) => setTitleNote(e.target.value)}
           />
           <label htmlFor="content">Content :</label>
-          <input
-            type="textarea"
+          <textarea
             name="content"
             id="content"
+            cols="25"
+            rows="5"
             value={contentNote}
             onChange={(e) => setContentNote(e.target.value)}
-          />
+          ></textarea>
+
           <div className="btns-container">
-            <button className="btn" onClick={createNote}>
+            <button className="btn btn-green" onClick={createNote}>
               Ok
             </button>
             <button className="btn btn-red" onClick={handleAddNoteForm}>
