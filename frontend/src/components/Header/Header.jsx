@@ -71,7 +71,7 @@ const Header = ({ isLogged, setIsLogged }) => {
                       </li>
                     </>
                   ) : (
-                    <li>
+                    <li className="link-container">
                       <NavLink to="/sign-up">Sign-up</NavLink>
                       {' / '}
                       <NavLink to="/log-in">Log-in</NavLink>

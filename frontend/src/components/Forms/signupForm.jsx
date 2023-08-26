@@ -20,6 +20,15 @@ const SignupForm = () => {
       alert('Les mots de passe de correspondent pas');
       return;
     }
+    if (
+      !formData.username ||
+      !formData.email ||
+      !formData.password ||
+      !formData.confirmPassword
+    ) {
+      alert('Veuillez remplir tout les champs');
+      return;
+    }
     fetch('http://localhost:4200/signup', {
       method: 'POST',
       headers: {
@@ -36,7 +45,14 @@ const SignupForm = () => {
           password: '',
           confirmPassword: '',
         });
+        document
+          .getElementById('signup-form-container')
+          .classList.toggle('hide');
+        document
+          .getElementById('create-account-succes-popup')
+          .classList.toggle('hide');
       })
+
       .catch((error) => {
         console.log('Error :', error);
       });
@@ -48,7 +64,7 @@ const SignupForm = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <div className="form-container">
+              <div className="form-container" id="signup-form-container">
                 <h2>Sign-up</h2>
                 <form onSubmit={handleSubmit}>
                   <label htmlFor="username">Username*</label>
@@ -92,6 +108,16 @@ const SignupForm = () => {
                   <NavLink to="/log-in">Log-in</NavLink>
                 </p>
                 <p className="required">*Required</p>
+              </div>
+              <div
+                className="form-container hide"
+                id="create-account-succes-popup"
+              >
+                <h2>Compte créer avec succès !</h2>
+                <p>
+                  <NavLink to="/log-in">Connecter vous</NavLink> /{' '}
+                  <NavLink to="/">Page d'accueil</NavLink>
+                </p>
               </div>
             </div>
           </div>
