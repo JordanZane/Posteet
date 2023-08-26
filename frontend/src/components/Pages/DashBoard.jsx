@@ -17,6 +17,12 @@ const DashBoard = () => {
 
     const userId = localStorage.getItem('userId');
     const token = localStorage.getItem('token');
+
+    if (!titleNote || !contentNote) {
+      alert('Le titre et le contenu de la note sont requis');
+      return;
+    }
+
     const headers = {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
@@ -103,6 +109,7 @@ const DashBoard = () => {
       </div>
       <div id="add-note-form">
         <form className="form-container">
+          <h2>Add your note</h2>
           <label htmlFor="title">Title :</label>
           <input
             type="text"
@@ -119,8 +126,14 @@ const DashBoard = () => {
             value={contentNote}
             onChange={(e) => setContentNote(e.target.value)}
           />
-          <button onClick={createNote}>Ok</button>
-          <button onClick={handleAddNoteForm}>Cancel</button>
+          <div className="btns-container">
+            <button className="btn" onClick={createNote}>
+              Ok
+            </button>
+            <button className="btn btn-red" onClick={handleAddNoteForm}>
+              Cancel
+            </button>
+          </div>
         </form>
       </div>
     </div>

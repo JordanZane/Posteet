@@ -151,6 +151,14 @@ body {
     color: $color-orange;
     border: 1px solid $color-orange;
   }
+  &.btn-red {
+    background-color: $color-red;
+    border: 1px solid $color-red;
+    &:hover {
+      background-color: unset;
+      color: $color-red;
+    }
+  }
 }
 
 .btn-round {
