@@ -71,4 +71,29 @@
       }
     }
   }
+  .current-notes-container {
+    display: flex;
+    flex-wrap: wrap;
+    .note-container {
+      width: 20%;
+      .note-content {
+        margin: 10px;
+        h3 {
+          background-color: $color-orange;
+          color: $color-white;
+          border-top-left-radius: 12px;
+          border-top-right-radius: 12px;
+          margin: 0;
+          padding: 8px;
+          text-align: center;
+        }
+        p {
+          border: 1px solid grey;
+          border-top: unset;
+          margin: 0;
+          padding: 20px 8px;
+        }
+      }
+    }
+  }
 }
