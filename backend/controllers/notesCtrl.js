@@ -2,8 +2,8 @@ const Note = require('../models/Notes');
 
 exports.getUserNotes = (req, res, next) => {
   console.log('Get notes route called');
-  const userId = req.params.id;
-  Note.find({ userId: userId })
+  const userId = req.params.userId;
+  Note.find({ user: userId })
     .then((notes) => {
       res.status(200).json({ notes: notes });
     })

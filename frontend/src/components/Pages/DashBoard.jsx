@@ -1,14 +1,45 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const DashBoard = () => {
   const [titleNote, setTitleNote] = useState('');
   const [contentNote, setContentNote] = useState('');
+  const [userNotes, setUserNotes] = useState([]);
 
   const handleAddNoteForm = (e) => {
     e.preventDefault();
     document.getElementById('add-note-form').classList.toggle('active');
     document.getElementById('notes-container').classList.toggle('active');
+  };
+
+  const getUserNotes = () => {
+    const userId = localStorage.getItem('userId');
+    const token = localStorage.getItem('token');
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    };
+    fetch(`http://localhost:4200/notes/${userId}`, {
+      method: 'GET',
+      headers: headers,
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Erreur lors de la récupération de l'utilisateur");
+        }
+      })
+      .then((data) => {
+        const userNotes = data.notes;
+        console.log(data);
+        setUserNotes(userNotes);
+      })
+      .catch((error) => {
+        console.log(
+          "Erreur lors de la récupération de l'utilisateur : ",
+          error
+        );
+      });
   };
 
   const createNote = (e) => {
@@ -58,6 +89,10 @@ const DashBoard = () => {
       });
   };
 
+  useEffect(() => {
+    getUserNotes();
+  }, []);
+
   return (
     <div className="dashboard-page">
       <div id="notes-container" className="active">
@@ -91,7 +126,14 @@ const DashBoard = () => {
             <div className="row">
               <div className="col-lg-12">
                 <h2>Current notes</h2>
-                <div className="current-notes-container notes-container"></div>
+                <div className="current-notes-container notes-container">
+                  {userNotes.map((note, index) => (
+                    <div key={index} className="note">
+                      <h3>{note.titleNote}</h3>
+                      <p>{note.contentNote}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
