@@ -87,6 +87,7 @@ const DashBoard = () => {
         console.log('Erreur lors de la création de la note', error);
         alert('Erreur lors de la création de la note');
       });
+    getUserNotes();
   };
 
   useEffect(() => {
@@ -128,9 +129,11 @@ const DashBoard = () => {
                 <h2>Current notes</h2>
                 <div className="current-notes-container notes-container">
                   {userNotes.map((note, index) => (
-                    <div key={index} className="note">
-                      <h3>{note.titleNote}</h3>
-                      <p>{note.contentNote}</p>
+                    <div key={index} className="note-container">
+                      <div className="note-content">
+                        <h3>{note.titleNote}</h3>
+                        <p>{note.contentNote}</p>
+                      </div>
                     </div>
                   ))}
                 </div>
