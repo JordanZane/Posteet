@@ -78,6 +78,7 @@ const DashBoard = () => {
           setContentNote('');
           document.getElementById('add-note-form').classList.toggle('active');
           document.getElementById('notes-container').classList.toggle('active');
+          getUserNotes();
         } else {
           console.log('Erreur lors de la création de la note');
           alert('Erreur lors de la création de la note');
