@@ -5,5 +5,6 @@ const auth = require('../middlewares/auth');
 
 router.get('/:userId', auth, noteCtrl.getUserNotes);
 router.post('/:userId', auth, noteCtrl.createNote);
+router.put('/:userId/:noteId', auth, noteCtrl.modifyNote);
 
 module.exports = router;

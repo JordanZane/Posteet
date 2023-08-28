@@ -11,6 +11,11 @@
       margin-left: 6px;
     }
   }
+  h2 {
+    font-size: 28px;
+    line-height: 36px;
+    padding: 0 0 10px 0;
+  }
   #addNote-form {
     display: flex;
     flex-direction: column;
@@ -23,6 +28,7 @@
     padding: 20px;
     opacity: 0;
     border-radius: 9px;
+    z-index: -1;
     input {
       margin-bottom: 15px;
     }
@@ -83,7 +89,7 @@
       width: 20%;
       .note-content {
         margin: 10px;
-        h3 {
+        input {
           background-color: $color-orange;
           color: $color-white;
           border-top-left-radius: 12px;
@@ -91,13 +97,15 @@
           margin: 0;
           padding: 8px;
           text-align: center;
+          width: 100%;
         }
-        p {
+        textarea {
           border: 1px solid grey;
           border-top: unset;
           margin: 0;
           padding: 20px 8px;
           min-height: 125px;
+          width: 100%;
         }
       }
     }
