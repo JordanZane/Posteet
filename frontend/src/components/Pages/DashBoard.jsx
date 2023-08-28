@@ -98,7 +98,7 @@ const DashBoard = () => {
   return (
     <div className="dashboard-page">
       <div id="notes-container" className="active">
-        <section className="section">
+        <section className="header-section">
           <div className="container">
             <div className="row">
               <div className="col-lg-12">
@@ -123,7 +123,7 @@ const DashBoard = () => {
             </div>
           </div>
         </section>
-        <section className="current-notes section">
+        <section className="current-notes">
           <div className="container">
             <div className="row">
               <div className="col-lg-12">
@@ -142,7 +142,7 @@ const DashBoard = () => {
             </div>
           </div>
         </section>
-        <section className="deleted-notes section">
+        <section className="deleted-notes">
           <div className="container">
             <div className="row">
               <div className="col-lg-12">

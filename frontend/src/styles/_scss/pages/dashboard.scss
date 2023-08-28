@@ -1,6 +1,6 @@
 .dashboard-page {
-  .section {
-    margin: 200px 0;
+  .header-section {
+    margin-top: 200px;
   }
   h1 {
     color: $color-orange;
@@ -71,6 +71,11 @@
       }
     }
   }
+  section.current-notes,
+  section.deleted-notes {
+    margin-bottom: 100px;
+  }
+
   .current-notes-container {
     display: flex;
     flex-wrap: wrap;
@@ -92,6 +97,7 @@
           border-top: unset;
           margin: 0;
           padding: 20px 8px;
+          min-height: 125px;
         }
       }
     }
