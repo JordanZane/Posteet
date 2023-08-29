@@ -6,6 +6,8 @@ const DashBoard = () => {
   const [userNotes, setUserNotes] = useState([]);
   const [fieldsEnabled, setFieldsEnabled] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
+  const [deleteNoteConfirm, setDeleteNoteConfirm] = useState(false);
+  const [deleteIndex, setDeleteIndex] = useState(null);
   const titleRefs = useRef([]);
 
   const handleAddNoteForm = (e) => {
@@ -157,6 +159,38 @@ const DashBoard = () => {
       });
   };
 
+  const handleDeleteConfirmNote = (index) => {
+    setDeleteNoteConfirm(true);
+    setDeleteIndex(index);
+  };
+
+  const deleteUserNote = (index) => {
+    console.log('Delete user Note function called');
+    const userId = localStorage.getItem('userId');
+    const token = localStorage.getItem('token');
+    const deletedNote = userNotes[index];
+    const headers = {
+      'Content-type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    };
+
+    fetch(`http://localhost:4200/${userId}/${deletedNote._id}`, {
+      method: 'DELETE',
+      headers: headers,
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log('Deleted Note confirmed');
+          getUserNotes();
+        }
+      })
+      .catch((error) => {
+        console.log('Erreur lors de la suppression de la note : ', error);
+      });
+    setDeleteIndex(null);
+    setDeleteNoteConfirm(false);
+  };
+
   useEffect(() => {
     getUserNotes();
   }, []);
@@ -222,9 +256,34 @@ const DashBoard = () => {
                               ? 'Save'
                               : 'Edit'}
                           </button>
-                          <button className="delete-btn">Delete</button>
+                          <button
+                            className="delete-btn"
+                            onClick={() => handleDeleteConfirmNote(index)}
+                          >
+                            Delete
+                          </button>
                         </div>
                       </div>
+
+                      {deleteNoteConfirm && deleteIndex === index && (
+                        <div className="overlay-popup">
+                          <div className="delete-note-popup">
+                            <h3>Are you sure you want to delete this note ?</h3>
+                            <button
+                              className="btn btn-green"
+                              onClick={() => deleteUserNote(deleteIndex)}
+                            >
+                              Confirm
+                            </button>
+                            <button
+                              className="btn btn-red"
+                              onClick={() => setDeleteNoteConfirm(false)}
+                            >
+                              Cancel
+                            </button>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>
