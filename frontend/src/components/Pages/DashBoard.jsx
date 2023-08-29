@@ -174,7 +174,7 @@ const DashBoard = () => {
       Authorization: `Bearer ${token}`,
     };
 
-    fetch(`http://localhost:4200/${userId}/${deletedNote._id}`, {
+    fetch(`http://localhost:4200/notes/${userId}/${deletedNote._id}`, {
       method: 'DELETE',
       headers: headers,
     })

@@ -62,3 +62,27 @@ exports.modifyNote = async (req, res, next) => {
     });
   }
 };
+
+exports.deleteNote = async (req, res, next) => {
+  try {
+    const userId = req.params.userId;
+    const noteId = req.params.noteId;
+
+    // Check if the note belongs to the requesting user
+    const note = await Note.findOne({ _id: noteId, user: userId });
+
+    if (!note) {
+      return res.status(404).json({ message: 'Note not found' });
+    }
+
+    // Delete the note
+    await Note.deleteOne({ _id: noteId });
+
+    res.status(200).json({ message: 'Note deleted successfully' });
+  } catch (error) {
+    console.log('Error deleting note:', error);
+    res
+      .status(500)
+      .json({ message: 'An error occurred while deleting the note' });
+  }
+};
