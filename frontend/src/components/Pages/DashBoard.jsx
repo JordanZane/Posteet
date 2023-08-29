@@ -216,11 +216,14 @@ const DashBoard = () => {
                           disabled={!fieldsEnabled}
                           id={`content-${index}`}
                         ></textarea>
-                        <button onClick={() => handleEditButtonClick(index)}>
-                          {fieldsEnabled && editIndex === index
-                            ? 'Save'
-                            : 'Edit'}
-                        </button>
+                        <div className="options-container">
+                          <button onClick={() => handleEditButtonClick(index)}>
+                            {fieldsEnabled && editIndex === index
+                              ? 'Save'
+                              : 'Edit'}
+                          </button>
+                          <button className="delete-btn">Delete</button>
+                        </div>
                       </div>
                     </div>
                   ))}

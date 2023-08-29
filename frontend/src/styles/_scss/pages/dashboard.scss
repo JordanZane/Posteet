@@ -87,25 +87,45 @@
     flex-wrap: wrap;
     .note-container {
       width: 20%;
+      margin-bottom: 30px;
       .note-content {
         margin: 10px;
+        position: relative;
         input {
           background-color: $color-orange;
           color: $color-white;
           border-top-left-radius: 12px;
           border-top-right-radius: 12px;
           margin: 0;
-          padding: 8px;
           text-align: center;
           width: 100%;
+          font-size: 24px;
         }
         textarea {
           border: 1px solid grey;
           border-top: unset;
+          border-bottom: unset;
           margin: 0;
           padding: 20px 8px;
           min-height: 125px;
           width: 100%;
+          background: unset;
+        }
+        .options-container {
+          position: absolute;
+          border: 1px solid grey;
+          position: absolute;
+          width: 100%;
+          bottom: -20px;
+          button {
+            border: unset;
+            background: unset;
+            font-weight: bold;
+            color: $color-green;
+          }
+          button.delete-btn {
+            color: $color-red;
+          }
         }
       }
     }
