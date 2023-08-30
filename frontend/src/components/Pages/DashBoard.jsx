@@ -291,16 +291,6 @@ const DashBoard = () => {
             </div>
           </div>
         </section>
-        <section className="deleted-notes">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-12">
-                <h2>Deleted notes</h2>
-                <div className="deleted-notes-container notes-container"></div>
-              </div>
-            </div>
-          </div>
-        </section>
       </div>
       <div id="add-note-form">
         <form className="form-container">
