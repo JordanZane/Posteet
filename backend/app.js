@@ -19,6 +19,7 @@ mongoose
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 const app = express();
+
 app.use(express.json());
 
 app.use((req, res, next) => {

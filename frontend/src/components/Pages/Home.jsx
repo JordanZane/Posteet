@@ -165,6 +165,7 @@ const Home = ({ isLogged }) => {
                     name="email"
                     value={userEmail}
                     onChange={(e) => setUserEmail(e.target.value)}
+                    required
                   />
                   <label htmlFor="message">Message*</label>
                   <textarea
@@ -174,6 +175,7 @@ const Home = ({ isLogged }) => {
                     rows="6"
                     value={userMessage}
                     onChange={(e) => setUserMessage(e.target.value)}
+                    required
                   ></textarea>
                   <div className="btn-container ">
                     <button className="btn" type="submit">
