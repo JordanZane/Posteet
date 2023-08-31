@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -17,7 +17,50 @@ const Home = ({ isLogged }) => {
     autoplaySpeed: 3000,
   };
 
+  const [userEmail, setUserEmail] = useState('');
+  const [userMessage, setUserMessage] = useState('');
+  const [submitting, setSubmitting] = useState(false);
+
   const userId = localStorage.getItem('userId');
+
+  const handleSubmitForm = (e) => {
+    e.preventDefault();
+    console.log('Message du formulaire envoyé');
+
+    const email = userEmail;
+    const message = userMessage;
+    const data = {
+      email: email,
+      message: message,
+    };
+
+    const headers = {
+      'Content-Type': 'application/json',
+    };
+
+    setSubmitting(true);
+    fetch(`http://localhost:4200/send-email`, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log('Email send');
+          alert('Email send');
+          setUserEmail('');
+          setUserMessage('');
+        } else {
+          console.log('Error when sending email');
+          alert('Error when sending email');
+        }
+      })
+      .catch((error) => {
+        console.log('Error when sending email :', error);
+        alert('Error when sending email');
+      });
+    setSubmitting(false);
+  };
 
   return (
     <div className="home-page">
@@ -114,19 +157,27 @@ const Home = ({ isLogged }) => {
                   feedback and strive to provide the best possible experience
                   for our users.
                 </p>
-                <form>
+                <form onSubmit={handleSubmitForm}>
                   <label htmlFor="email">Email*</label>
-                  <input type="email" id="email" name="email" />
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={userEmail}
+                    onChange={(e) => setUserEmail(e.target.value)}
+                  />
                   <label htmlFor="message">Message*</label>
                   <textarea
                     name="message"
                     id="message"
                     cols="18"
                     rows="6"
+                    value={userMessage}
+                    onChange={(e) => setUserMessage(e.target.value)}
                   ></textarea>
                   <div className="btn-container ">
                     <button className="btn" type="submit">
-                      Send
+                      {submitting ? 'Envoi en cours' : 'Envoyer'}
                     </button>
                   </div>
                   <p>*Required fields</p>
