@@ -8,6 +8,7 @@ const userRouteSign = require('./routes/signup');
 const userRouteLog = require('./routes/login');
 const usersRoute = require('./routes/users');
 const notesRoute = require('./routes/notes');
+const sendEmailRoute = require('./routes/sendEmail');
 
 mongoose
   .connect(process.env.MONGODB_URI, {
@@ -37,5 +38,6 @@ app.use('/signup', userRouteSign);
 app.use('/login', userRouteLog);
 app.use('/users', usersRoute);
 app.use('/notes', notesRoute);
+app.use('/send-email', sendEmailRoute);
 
 module.exports = app;
