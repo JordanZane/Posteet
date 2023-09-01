@@ -231,3 +231,20 @@ body {
 .hide {
   display: none;
 }
+
+.loading-screen {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  background: rgb(211 211 211);
+  transform: translate(-50%, -50%);
+  height: 100%;
+  z-index: 2;
+  .loading-spinner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

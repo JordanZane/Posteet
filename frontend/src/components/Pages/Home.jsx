@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import LoadingScreen from '../LoadingScreen/LoadingScreen';
 
 import aboutImg from '../../assets/images/about-img.png';
 
@@ -20,6 +21,7 @@ const Home = ({ isLogged }) => {
   const [userEmail, setUserEmail] = useState('');
   const [userMessage, setUserMessage] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const userId = localStorage.getItem('userId');
 
@@ -61,9 +63,20 @@ const Home = ({ isLogged }) => {
         setSubmitting(false);
       });
   };
+  useEffect(() => {
+    window.addEventListener('load', () => {
+      setLoading(false);
+    });
+
+    return () => {
+      window.removeEventListener('load', () => {});
+      setLoading(false);
+    };
+  }, []);
 
   return (
     <div className="home-page">
+      {loading ? <LoadingScreen /> : null}
       <main>
         <section className="about section odd-section">
           <div className="container">
