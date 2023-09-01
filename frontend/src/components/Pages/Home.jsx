@@ -37,7 +37,6 @@ const Home = ({ isLogged }) => {
     const headers = {
       'Content-Type': 'application/json',
     };
-
     setSubmitting(true);
     fetch(`http://localhost:4200/send-email`, {
       method: 'POST',
@@ -54,12 +53,13 @@ const Home = ({ isLogged }) => {
           console.log('Error when sending email');
           alert('Error when sending email');
         }
+        setSubmitting(false);
       })
       .catch((error) => {
         console.log('Error when sending email :', error);
         alert('Error when sending email');
+        setSubmitting(false);
       });
-    setSubmitting(false);
   };
 
   return (
