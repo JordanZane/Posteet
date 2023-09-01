@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import LoadingScreen from '../LoadingScreen/LoadingScreen';
 
 const DashBoard = () => {
   const [titleNote, setTitleNote] = useState('');
@@ -8,6 +9,7 @@ const DashBoard = () => {
   const [editIndex, setEditIndex] = useState(null);
   const [deleteNoteConfirm, setDeleteNoteConfirm] = useState(false);
   const [deleteIndex, setDeleteIndex] = useState(null);
+  const [loading, setLoading] = useState(true);
   const titleRefs = useRef([]);
 
   const handleAddNoteForm = (e) => {
@@ -43,6 +45,16 @@ const DashBoard = () => {
       setEditIndex(index);
     }
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 500); // Affiche le LoadingScreen pendant au moins 0,5 seconde
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
 
   const getUserNotes = () => {
     const userId = localStorage.getItem('userId');
@@ -197,6 +209,7 @@ const DashBoard = () => {
 
   return (
     <div className="dashboard-page">
+      {loading ? <LoadingScreen /> : null}
       <div id="notes-container" className="active">
         <section className="header-section">
           <div className="container">

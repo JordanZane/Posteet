@@ -64,13 +64,12 @@ const Home = ({ isLogged }) => {
       });
   };
   useEffect(() => {
-    window.addEventListener('load', () => {
+    const timer = setTimeout(() => {
       setLoading(false);
-    });
+    }, 500); // Affiche le LoadingScreen pendant au moins 0,5 seconde
 
     return () => {
-      window.removeEventListener('load', () => {});
-      setLoading(false);
+      clearTimeout(timer);
     };
   }, []);
 
