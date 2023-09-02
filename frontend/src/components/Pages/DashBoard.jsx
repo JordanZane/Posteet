@@ -46,16 +46,6 @@ const DashBoard = () => {
     }
   };
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 500);
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
-
   const getUserNotes = () => {
     const userId = localStorage.getItem('userId');
     const token = localStorage.getItem('token');
@@ -77,6 +67,7 @@ const DashBoard = () => {
       .then((data) => {
         const userNotes = data.notes;
         setUserNotes(userNotes);
+        setLoading(false);
       })
       .catch((error) => {
         console.log(

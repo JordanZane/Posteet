@@ -63,6 +63,7 @@ const Home = ({ isLogged }) => {
         setSubmitting(false);
       });
   };
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
