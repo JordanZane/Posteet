@@ -66,7 +66,7 @@ const Home = ({ isLogged }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 500); // Affiche le LoadingScreen pendant au moins 0,5 seconde
+    }, 500);
 
     return () => {
       clearTimeout(timer);
