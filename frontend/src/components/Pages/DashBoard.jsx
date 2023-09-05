@@ -5,6 +5,7 @@ const DashBoard = () => {
   const [titleNote, setTitleNote] = useState('');
   const [contentNote, setContentNote] = useState('');
   const [userNotes, setUserNotes] = useState([]);
+  const [selectedSort, setSelectedSort] = useState('desc');
   const [fieldsEnabled, setFieldsEnabled] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
   const [deleteNoteConfirm, setDeleteNoteConfirm] = useState(false);
@@ -44,6 +45,12 @@ const DashBoard = () => {
       }, 0);
       setEditIndex(index);
     }
+  };
+
+  const handleSortChange = (event) => {
+    const selectedValue = event.target.value;
+    setSelectedSort(selectedValue);
+    sortNotes(selectedValue);
   };
 
   const getUserNotes = () => {
@@ -195,6 +202,17 @@ const DashBoard = () => {
     setDeleteNoteConfirm(false);
   };
 
+  const sortNotes = (sort) => {
+    const sortedNote = [...userNotes].sort((a, b) => {
+      if (sort === 'desc') {
+        return new Date(b.creationDate) - new Date(a.creationDate);
+      } else {
+        return new Date(a.creationDate) - new Date(b.creationDate);
+      }
+    });
+    setUserNotes(sortedNote);
+  };
+
   useEffect(() => {
     getUserNotes();
   }, []);
@@ -213,6 +231,18 @@ const DashBoard = () => {
                     <i className="fa-solid fa-plus"></i>
                   </div>
                 </h1>
+                <div className="sort-btns-container">
+                  <label htmlFor="sortSelect">Sort by :</label>
+                  <select
+                    id="sortSelect"
+                    value={selectedSort}
+                    onChange={handleSortChange}
+                  >
+                    <option value="desc">Newest</option>
+                    <option value="asc">Oldest</option>
+                  </select>
+                </div>
+
                 <form id="addNote-form">
                   <label htmlFor="title">Title</label>
                   <input type="text" id="title" name="title" />

@@ -20,6 +20,7 @@ exports.createNote = (req, res, next) => {
     titleNote,
     contentNote,
     user: userId,
+    creationDate: Date.now(),
   });
   note
     .save()

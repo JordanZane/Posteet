@@ -4,6 +4,20 @@
   min-height: 100vh;
   .header-section {
     margin-top: 200px;
+    margin-bottom: 50px;
+    .sort-btns-container {
+      label {
+        color: $color-orange;
+        font-weight: bold;
+        margin-right: 5px;
+        font-size: 18px;
+      }
+      select {
+        font-size: 18px;
+        border: unset;
+        outline: unset;
+      }
+    }
   }
   h1 {
     color: $color-orange;
