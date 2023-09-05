@@ -4,8 +4,9 @@ import LoadingScreen from '../LoadingScreen/LoadingScreen';
 const DashBoard = () => {
   const [titleNote, setTitleNote] = useState('');
   const [contentNote, setContentNote] = useState('');
+  const [importanceNote, setImportanceNote] = useState('');
   const [userNotes, setUserNotes] = useState([]);
-  const [selectedSort, setSelectedSort] = useState('desc');
+  const [selectedSort, setSelectedSort] = useState('asc');
   const [fieldsEnabled, setFieldsEnabled] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
   const [deleteNoteConfirm, setDeleteNoteConfirm] = useState(false);
@@ -31,6 +32,12 @@ const DashBoard = () => {
     setUserNotes(updatedNotes);
   };
 
+  const handleImportanceChange = (index, newImportance) => {
+    const updatedNotes = [...userNotes];
+    updatedNotes[index].importanceNote = newImportance;
+    setUserNotes(updatedNotes);
+  };
+
   const handleEditButtonClick = (index) => {
     if (fieldsEnabled && editIndex === index) {
       saveNoteChanges(index);
@@ -44,6 +51,7 @@ const DashBoard = () => {
         }
       }, 0);
       setEditIndex(index);
+      setImportanceNote(userNotes[index].importance);
     }
   };
 
@@ -91,7 +99,7 @@ const DashBoard = () => {
     const userId = localStorage.getItem('userId');
     const token = localStorage.getItem('token');
 
-    if (!titleNote || !contentNote) {
+    if (!titleNote || !contentNote || !importanceNote) {
       alert('Le titre et le contenu de la note sont requis');
       return;
     }
@@ -105,6 +113,7 @@ const DashBoard = () => {
       titleNote: titleNote,
       contentNote: contentNote,
       user: userId,
+      importanceNote: importanceNote,
     };
 
     fetch(`http://localhost:4200/notes/${userId}`, {
@@ -118,6 +127,8 @@ const DashBoard = () => {
           alert('Note créer');
           setTitleNote('');
           setContentNote('');
+          setImportanceNote('normale');
+
           document.getElementById('add-note-form').classList.toggle('active');
           document.getElementById('notes-container').classList.toggle('active');
 
@@ -144,7 +155,11 @@ const DashBoard = () => {
       Authorization: `Bearer ${token}`,
     };
 
-    if (!updatedNote.titleNote || !updatedNote.contentNote) {
+    if (
+      !updatedNote.titleNote ||
+      !updatedNote.contentNote ||
+      !updatedNote.importanceNote
+    ) {
       alert('Tout les champs doivent être remplis');
       return;
     }
@@ -155,6 +170,7 @@ const DashBoard = () => {
       body: JSON.stringify({
         titleNote: updatedNote.titleNote,
         contentNote: updatedNote.contentNote,
+        importanceNote: updatedNote.importanceNote,
       }),
     })
       .then((response) => {
@@ -238,8 +254,8 @@ const DashBoard = () => {
                     value={selectedSort}
                     onChange={handleSortChange}
                   >
-                    <option value="desc">Newest</option>
                     <option value="asc">Oldest</option>
+                    <option value="desc">Newest</option>
                   </select>
                 </div>
 
@@ -285,6 +301,19 @@ const DashBoard = () => {
                           disabled={!fieldsEnabled}
                           id={`content-${index}`}
                         ></textarea>
+                        <select
+                          id="importance"
+                          name="importance"
+                          value={note.importanceNote}
+                          onChange={(e) =>
+                            handleImportanceChange(index, e.target.value)
+                          }
+                          disabled={!fieldsEnabled}
+                        >
+                          <option value="basse">Basse</option>
+                          <option value="normale">Normale</option>
+                          <option value="haute">Haute</option>
+                        </select>
                         <div className="options-container">
                           <button onClick={() => handleEditButtonClick(index)}>
                             {fieldsEnabled && editIndex === index
@@ -348,7 +377,17 @@ const DashBoard = () => {
             value={contentNote}
             onChange={(e) => setContentNote(e.target.value)}
           ></textarea>
-
+          <label htmlFor="importance">Importance:</label>
+          <select
+            id="importance"
+            name="importance"
+            value={importanceNote}
+            onChange={(e) => setImportanceNote(e.target.value)}
+          >
+            <option value="basse">Basse</option>
+            <option value="normale">Normale</option>
+            <option value="haute">Haute</option>
+          </select>
           <div className="btns-container">
             <button className="btn btn-green" onClick={createNote}>
               Ok

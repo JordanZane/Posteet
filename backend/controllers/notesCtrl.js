@@ -15,11 +15,12 @@ exports.getUserNotes = (req, res, next) => {
 exports.createNote = (req, res, next) => {
   console.log('Create note route called');
   const userId = req.params.userId;
-  const { titleNote, contentNote } = req.body;
+  const { titleNote, contentNote, importanceNote } = req.body;
   const note = new Note({
     titleNote,
     contentNote,
     user: userId,
+    importanceNote,
     creationDate: Date.now(),
   });
   note
