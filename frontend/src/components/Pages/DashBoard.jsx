@@ -113,6 +113,7 @@ const DashBoard = () => {
           setContentNote('');
           document.getElementById('add-note-form').classList.toggle('active');
           document.getElementById('notes-container').classList.toggle('active');
+
           getUserNotes();
         } else {
           console.log('Erreur lors de la création de la note');
@@ -199,109 +200,103 @@ const DashBoard = () => {
   }, []);
 
   return (
-    <div className="dashboard-page">
+    <div className="dashboard-page" id="dashboard-page">
       {loading ? <LoadingScreen /> : null}
-      <main>
-        <div id="notes-container" className="active">
-          <section className="header-section">
-            <div className="container">
-              <div className="row">
-                <div className="col-lg-12">
-                  <h1>
-                    Create your note{' '}
-                    <div className="btn-round" onClick={handleAddNoteForm}>
-                      <i className="fa-solid fa-plus"></i>
-                    </div>
-                  </h1>
-                  <form id="addNote-form">
-                    <label htmlFor="title">Title</label>
-                    <input type="text" id="title" name="title" />
-                    <label htmlFor="content">Content</label>
-                    <textarea
-                      name="content"
-                      id="content"
-                      cols="30"
-                      rows="6"
-                    ></textarea>
-                  </form>
-                </div>
+      <div id="notes-container" className="active">
+        <section className="header-section">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-12">
+                <h1>
+                  Create your note{' '}
+                  <div className="btn-round" onClick={handleAddNoteForm}>
+                    <i className="fa-solid fa-plus"></i>
+                  </div>
+                </h1>
+                <form id="addNote-form">
+                  <label htmlFor="title">Title</label>
+                  <input type="text" id="title" name="title" />
+                  <label htmlFor="content">Content</label>
+                  <textarea
+                    name="content"
+                    id="content"
+                    cols="30"
+                    rows="6"
+                  ></textarea>
+                </form>
               </div>
             </div>
-          </section>
-          <section className="current-notes">
-            <div className="container">
-              <div className="row">
-                <div className="col-lg-12">
-                  <h2>Current notes</h2>
-                  <div className="current-notes-container notes-container">
-                    {userNotes.map((note, index) => (
-                      <div key={index} className="note-container">
-                        <div className="note-content">
-                          <input
-                            type="text"
-                            value={note.titleNote}
-                            onChange={(e) =>
-                              handleTitleChange(index, e.target.value)
-                            }
-                            disabled={!fieldsEnabled}
-                            id={`title-${index}`}
-                            ref={(el) => (titleRefs.current[index] = el)}
-                          />
-                          <textarea
-                            value={note.contentNote}
-                            onChange={(e) =>
-                              handleContentChange(index, e.target.value)
-                            }
-                            disabled={!fieldsEnabled}
-                            id={`content-${index}`}
-                          ></textarea>
-                          <div className="options-container">
+          </div>
+        </section>
+        <section className="current-notes">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-12">
+                <h2>Current notes</h2>
+                <div className="current-notes-container notes-container">
+                  {userNotes.map((note, index) => (
+                    <div key={index} className="note-container">
+                      <div className="note-content">
+                        <input
+                          type="text"
+                          value={note.titleNote}
+                          onChange={(e) =>
+                            handleTitleChange(index, e.target.value)
+                          }
+                          disabled={!fieldsEnabled}
+                          id={`title-${index}`}
+                          ref={(el) => (titleRefs.current[index] = el)}
+                        />
+                        <textarea
+                          value={note.contentNote}
+                          onChange={(e) =>
+                            handleContentChange(index, e.target.value)
+                          }
+                          disabled={!fieldsEnabled}
+                          id={`content-${index}`}
+                        ></textarea>
+                        <div className="options-container">
+                          <button onClick={() => handleEditButtonClick(index)}>
+                            {fieldsEnabled && editIndex === index
+                              ? 'Save'
+                              : 'Edit'}
+                          </button>
+                          <button
+                            className="delete-btn"
+                            onClick={() => handleDeleteConfirmNote(index)}
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      </div>
+
+                      {deleteNoteConfirm && deleteIndex === index && (
+                        <div className="overlay-popup">
+                          <div className="delete-note-popup">
+                            <h3>Are you sure you want to delete this note ?</h3>
                             <button
-                              onClick={() => handleEditButtonClick(index)}
+                              className="btn btn-green"
+                              onClick={() => deleteUserNote(deleteIndex)}
                             >
-                              {fieldsEnabled && editIndex === index
-                                ? 'Save'
-                                : 'Edit'}
+                              Confirm
                             </button>
                             <button
-                              className="delete-btn"
-                              onClick={() => handleDeleteConfirmNote(index)}
+                              className="btn btn-red"
+                              onClick={() => setDeleteNoteConfirm(false)}
                             >
-                              Delete
+                              Cancel
                             </button>
                           </div>
                         </div>
-
-                        {deleteNoteConfirm && deleteIndex === index && (
-                          <div className="overlay-popup">
-                            <div className="delete-note-popup">
-                              <h3>
-                                Are you sure you want to delete this note ?
-                              </h3>
-                              <button
-                                className="btn btn-green"
-                                onClick={() => deleteUserNote(deleteIndex)}
-                              >
-                                Confirm
-                              </button>
-                              <button
-                                className="btn btn-red"
-                                onClick={() => setDeleteNoteConfirm(false)}
-                              >
-                                Cancel
-                              </button>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
+                      )}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
-          </section>
-        </div>
-      </main>
+          </div>
+        </section>
+      </div>
 
       <div id="add-note-form">
         <form className="form-container">
