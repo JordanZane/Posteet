@@ -45,13 +45,13 @@ const DashBoard = () => {
       setEditIndex(null);
     } else {
       setFieldsEnabled(true);
+      setEditIndex(index);
+      setImportanceNote(userNotes[index].importance);
       setTimeout(() => {
         if (titleRefs.current[index]) {
           titleRefs.current[index].focus();
         }
       }, 0);
-      setEditIndex(index);
-      setImportanceNote(userNotes[index].importance);
     }
   };
 
@@ -219,14 +219,30 @@ const DashBoard = () => {
   };
 
   const sortNotes = (sort) => {
-    const sortedNote = [...userNotes].sort((a, b) => {
-      if (sort === 'desc') {
+    const sortedNotes = [...userNotes];
+
+    if (sort === 'desc') {
+      sortedNotes.sort((a, b) => {
         return new Date(b.creationDate) - new Date(a.creationDate);
-      } else {
+      });
+    } else if (sort === 'asc') {
+      sortedNotes.sort((a, b) => {
         return new Date(a.creationDate) - new Date(b.creationDate);
-      }
-    });
-    setUserNotes(sortedNote);
+      });
+    } else if (sort === 'importance') {
+      sortedNotes.sort((a, b) => {
+        const importanceOrder = {
+          basse: 3,
+          normale: 2,
+          haute: 1,
+        };
+
+        return (
+          importanceOrder[a.importanceNote] - importanceOrder[b.importanceNote]
+        );
+      });
+    }
+    setUserNotes(sortedNotes);
   };
 
   useEffect(() => {
@@ -256,6 +272,7 @@ const DashBoard = () => {
                   >
                     <option value="asc">Oldest</option>
                     <option value="desc">Newest</option>
+                    <option value="importance">Importance</option>
                   </select>
                 </div>
 
@@ -289,7 +306,7 @@ const DashBoard = () => {
                           onChange={(e) =>
                             handleTitleChange(index, e.target.value)
                           }
-                          disabled={!fieldsEnabled}
+                          disabled={!fieldsEnabled || editIndex !== index}
                           id={`title-${index}`}
                           ref={(el) => (titleRefs.current[index] = el)}
                         />
@@ -298,7 +315,7 @@ const DashBoard = () => {
                           onChange={(e) =>
                             handleContentChange(index, e.target.value)
                           }
-                          disabled={!fieldsEnabled}
+                          disabled={!fieldsEnabled || editIndex !== index}
                           id={`content-${index}`}
                         ></textarea>
                         <select
@@ -308,7 +325,7 @@ const DashBoard = () => {
                           onChange={(e) =>
                             handleImportanceChange(index, e.target.value)
                           }
-                          disabled={!fieldsEnabled}
+                          disabled={!fieldsEnabled || editIndex !== index}
                         >
                           <option value="basse">Basse</option>
                           <option value="normale">Normale</option>
