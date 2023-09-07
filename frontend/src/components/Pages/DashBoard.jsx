@@ -55,6 +55,33 @@ const DashBoard = () => {
     }
   };
 
+  const sortNotes = (sort) => {
+    const sortedNotes = [...userNotes];
+
+    if (sort === 'desc') {
+      sortedNotes.sort((a, b) => {
+        return new Date(b.creationDate) - new Date(a.creationDate);
+      });
+    } else if (sort === 'asc') {
+      sortedNotes.sort((a, b) => {
+        return new Date(a.creationDate) - new Date(b.creationDate);
+      });
+    } else if (sort === 'importance') {
+      sortedNotes.sort((a, b) => {
+        const importanceOrder = {
+          basse: 3,
+          normale: 2,
+          haute: 1,
+        };
+
+        return (
+          importanceOrder[a.importanceNote] - importanceOrder[b.importanceNote]
+        );
+      });
+    }
+    setUserNotes(sortedNotes);
+  };
+
   const handleSortChange = (event) => {
     const selectedValue = event.target.value;
     setSelectedSort(selectedValue);
@@ -99,7 +126,7 @@ const DashBoard = () => {
     const userId = localStorage.getItem('userId');
     const token = localStorage.getItem('token');
 
-    if (!titleNote || !contentNote || !importanceNote) {
+    if (!titleNote || !contentNote) {
       alert('Le titre et le contenu de la note sont requis');
       return;
     }
@@ -176,7 +203,7 @@ const DashBoard = () => {
       .then((response) => {
         if (response.ok) {
           console.log('Note updated successfully');
-          getUserNotes();
+          sortNotes(selectedSort);
         } else {
           console.log('Erreur de la modification de la note');
         }
@@ -216,33 +243,6 @@ const DashBoard = () => {
       });
     setDeleteIndex(null);
     setDeleteNoteConfirm(false);
-  };
-
-  const sortNotes = (sort) => {
-    const sortedNotes = [...userNotes];
-
-    if (sort === 'desc') {
-      sortedNotes.sort((a, b) => {
-        return new Date(b.creationDate) - new Date(a.creationDate);
-      });
-    } else if (sort === 'asc') {
-      sortedNotes.sort((a, b) => {
-        return new Date(a.creationDate) - new Date(b.creationDate);
-      });
-    } else if (sort === 'importance') {
-      sortedNotes.sort((a, b) => {
-        const importanceOrder = {
-          basse: 3,
-          normale: 2,
-          haute: 1,
-        };
-
-        return (
-          importanceOrder[a.importanceNote] - importanceOrder[b.importanceNote]
-        );
-      });
-    }
-    setUserNotes(sortedNotes);
   };
 
   useEffect(() => {
