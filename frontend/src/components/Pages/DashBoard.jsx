@@ -299,7 +299,7 @@ const DashBoard = () => {
                 <div className="current-notes-container notes-container">
                   {userNotes.map((note, index) => (
                     <div key={index} className="note-container">
-                      <div className="note-content">
+                      <div className="note-header">
                         <input
                           type="text"
                           value={note.titleNote}
@@ -310,6 +310,8 @@ const DashBoard = () => {
                           id={`title-${index}`}
                           ref={(el) => (titleRefs.current[index] = el)}
                         />
+                      </div>
+                      <div className="note-content">
                         <textarea
                           value={note.contentNote}
                           onChange={(e) =>
@@ -318,31 +320,39 @@ const DashBoard = () => {
                           disabled={!fieldsEnabled || editIndex !== index}
                           id={`content-${index}`}
                         ></textarea>
-                        <select
-                          id="importance"
-                          name="importance"
-                          value={note.importanceNote}
-                          onChange={(e) =>
-                            handleImportanceChange(index, e.target.value)
-                          }
-                          disabled={!fieldsEnabled || editIndex !== index}
-                        >
-                          <option value="basse">Basse</option>
-                          <option value="normale">Normale</option>
-                          <option value="haute">Haute</option>
-                        </select>
+
                         <div className="options-container">
-                          <button onClick={() => handleEditButtonClick(index)}>
-                            {fieldsEnabled && editIndex === index
-                              ? 'Save'
-                              : 'Edit'}
-                          </button>
-                          <button
-                            className="delete-btn"
-                            onClick={() => handleDeleteConfirmNote(index)}
+                          <select
+                            id={`importance-${index}`}
+                            name="importance"
+                            value={note.importanceNote}
+                            onChange={(e) =>
+                              handleImportanceChange(index, e.target.value)
+                            }
+                            disabled={!fieldsEnabled || editIndex !== index}
                           >
-                            Delete
-                          </button>
+                            <option value="basse">basse</option>
+                            <option value="normale">normale</option>
+                            <option value="haute">haute</option>
+                          </select>
+
+                          <div className="btns-container">
+                            <button
+                              onClick={() => handleEditButtonClick(index)}
+                            >
+                              {fieldsEnabled && editIndex === index ? (
+                                <i className="fa-solid fa-floppy-disk"></i>
+                              ) : (
+                                <i className="fa-solid fa-pen"></i>
+                              )}
+                            </button>
+                            <button
+                              className="delete-btn"
+                              onClick={() => handleDeleteConfirmNote(index)}
+                            >
+                              <i className="fa-solid fa-trash"></i>
+                            </button>
+                          </div>
                         </div>
                       </div>
 

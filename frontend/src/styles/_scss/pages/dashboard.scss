@@ -120,34 +120,48 @@
     .note-container {
       width: 20%;
       margin-bottom: 30px;
-      .note-content {
-        margin: 10px;
-        position: relative;
+      select,
+      input,
+      textarea {
+        color: $color-grey;
+      }
+      .note-header {
+        background-color: $color-orange;
+        color: rgb(255, 255, 255);
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        margin: 0px 10px;
         input {
-          background-color: $color-orange;
-          color: $color-white;
+          background: unset;
           border-top-left-radius: 12px;
           border-top-right-radius: 12px;
+          color: $color-white;
           margin: 0;
           text-align: center;
           width: 100%;
           font-size: 24px;
         }
+      }
+      .note-content {
+        margin: 0px 10px;
+        position: relative;
+        border: 1px solid grey;
         textarea {
-          border: 1px solid grey;
-          border-top: unset;
-          border-bottom: unset;
           margin: 0;
           padding: 20px 8px;
           min-height: 125px;
           width: 100%;
           background: unset;
+          border: unset;
         }
         .options-container {
           position: relative;
-          border: 1px solid grey;
           width: 100%;
-          bottom: 7px;
+          bottom: 5px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 8px;
           button {
             border: unset;
             background: unset;
