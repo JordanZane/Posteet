@@ -310,6 +310,21 @@ const DashBoard = () => {
                           id={`title-${index}`}
                           ref={(el) => (titleRefs.current[index] = el)}
                         />
+                        <div className="btns-container">
+                          <button onClick={() => handleEditButtonClick(index)}>
+                            {fieldsEnabled && editIndex === index ? (
+                              <i className="fa-solid fa-floppy-disk"></i>
+                            ) : (
+                              <i className="fa-solid fa-pen" title="Edit"></i>
+                            )}
+                          </button>
+                          <button
+                            className="delete-btn"
+                            onClick={() => handleDeleteConfirmNote(index)}
+                          >
+                            <i className="fa-solid fa-trash" title="Delete"></i>
+                          </button>
+                        </div>
                       </div>
                       <div className="note-content">
                         <textarea
@@ -322,6 +337,7 @@ const DashBoard = () => {
                         ></textarea>
 
                         <div className="options-container">
+                          Importance :
                           <select
                             id={`importance-${index}`}
                             name="importance"
@@ -335,24 +351,6 @@ const DashBoard = () => {
                             <option value="normale">normale</option>
                             <option value="haute">haute</option>
                           </select>
-
-                          <div className="btns-container">
-                            <button
-                              onClick={() => handleEditButtonClick(index)}
-                            >
-                              {fieldsEnabled && editIndex === index ? (
-                                <i className="fa-solid fa-floppy-disk"></i>
-                              ) : (
-                                <i className="fa-solid fa-pen"></i>
-                              )}
-                            </button>
-                            <button
-                              className="delete-btn"
-                              onClick={() => handleDeleteConfirmNote(index)}
-                            >
-                              <i className="fa-solid fa-trash"></i>
-                            </button>
-                          </div>
                         </div>
                       </div>
 

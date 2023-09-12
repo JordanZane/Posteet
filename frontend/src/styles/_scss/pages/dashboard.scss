@@ -126,6 +126,7 @@
         color: $color-grey;
       }
       .note-header {
+        display: flex;
         background-color: $color-orange;
         color: rgb(255, 255, 255);
         border-top-left-radius: 12px;
@@ -133,13 +134,21 @@
         margin: 0px 10px;
         input {
           background: unset;
-          border-top-left-radius: 12px;
-          border-top-right-radius: 12px;
+          border: unset;
           color: $color-white;
           margin: 0;
           text-align: center;
           width: 100%;
           font-size: 24px;
+        }
+        .btns-container {
+          display: flex;
+          align-items: center;
+          button {
+            background-color: unset;
+            border: unset;
+            color: $color-white;
+          }
         }
       }
       .note-content {
