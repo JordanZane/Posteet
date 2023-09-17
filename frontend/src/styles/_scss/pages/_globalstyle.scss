@@ -255,3 +255,14 @@ body {
     margin: 0 auto;
   }
 }
+
+.overlay-popup {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1215686275);
+}

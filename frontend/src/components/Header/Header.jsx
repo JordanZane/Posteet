@@ -84,13 +84,15 @@ const Header = ({ isLogged, setIsLogged }) => {
         </div>
       </div>
       {showConfirmation && (
-        <ConfirmationModal>
-          <p>Êtes-vous sûr de vouloir vous déconnecter ?</p>
-          <div>
-            <LogoutButton onClick={handleConfirmLogout}>Oui</LogoutButton>
-            <LogoutButton onClick={handleCancelLougout}>Non</LogoutButton>
-          </div>
-        </ConfirmationModal>
+        <div className="overlay-popup">
+          <ConfirmationModal>
+            <p>Êtes-vous sûr de vouloir vous déconnecter ?</p>
+            <div>
+              <LogoutButton onClick={handleConfirmLogout}>Oui</LogoutButton>
+              <LogoutButton onClick={handleCancelLougout}>Non</LogoutButton>
+            </div>
+          </ConfirmationModal>
+        </div>
       )}
     </header>
   );
