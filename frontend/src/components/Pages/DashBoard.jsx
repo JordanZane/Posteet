@@ -402,17 +402,20 @@ const DashBoard = () => {
             value={contentNote}
             onChange={(e) => setContentNote(e.target.value)}
           ></textarea>
-          <label htmlFor="importance">Importance:</label>
-          <select
-            id="importance"
-            name="importance"
-            value={importanceNote}
-            onChange={(e) => setImportanceNote(e.target.value)}
-          >
-            <option value="basse">Basse</option>
-            <option value="normale">Normale</option>
-            <option value="haute">Haute</option>
-          </select>
+          <div className="select-importance-container">
+            <label htmlFor="importance">Importance :</label>
+            <select
+              id="importance"
+              name="importance"
+              value={importanceNote}
+              onChange={(e) => setImportanceNote(e.target.value)}
+            >
+              <option value="basse">Basse</option>
+              <option value="normale">Normale</option>
+              <option value="haute">Haute</option>
+            </select>
+          </div>
+
           <div className="btns-container">
             <button className="btn btn-green" onClick={createNote}>
               Ok
