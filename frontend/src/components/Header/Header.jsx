@@ -17,6 +17,10 @@ const Header = ({ isLogged, setIsLogged }) => {
     document.getElementById('subnav').classList.toggle('active');
   };
 
+  const HandleSubNavSm = () => {
+    document.getElementById('subnav-sm').classList.toggle('active');
+  };
+
   const handleLogout = () => {
     setShowConfirmation(true);
   };
@@ -83,7 +87,7 @@ const Header = ({ isLogged, setIsLogged }) => {
                 <ul>
                   <li>
                     <NavLink to="/">
-                      <i class="fa-solid fa-house"></i>
+                      <i className="fa-solid fa-house"></i>
                     </NavLink>
                   </li>
                   {isLogged ? (
@@ -92,10 +96,10 @@ const Header = ({ isLogged, setIsLogged }) => {
                         <NavLink to={`/dashboard/${userId}`}>Dashboard</NavLink>
                       </li>
                       <li>
-                        <button onClick={HandleSubNav}>
+                        <button onClick={HandleSubNavSm}>
                           <i className="fa-solid fa-user"></i>
                         </button>
-                        <ul id="subnav">
+                        <ul id="subnav-sm">
                           <li>
                             <Link to={`/my-account/${userId}`}>My account</Link>
                           </li>

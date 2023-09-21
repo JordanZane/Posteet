@@ -1,2 +1,6 @@
-.signup-page {
+.signup-page,
+.login-page {
+  @include respond-to('small') {
+    margin-top: 200px;
+  }
 }
