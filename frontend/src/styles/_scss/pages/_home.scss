@@ -4,11 +4,23 @@
   .even-section {
     .text-content {
       padding-left: 50px;
+      @include respond-to('medium') {
+        padding-left: 15px;
+      }
+      @include respond-to('small') {
+        text-align: center;
+      }
     }
   }
   .odd-section {
     .text-content {
       padding-right: 50px;
+      @include respond-to('medium') {
+        padding-right: 15px;
+      }
+      @include respond-to('small') {
+        text-align: center;
+      }
     }
   }
   .img-container {
@@ -76,6 +88,9 @@
       }
     }
     .text-content {
+      @include respond-to('small') {
+        text-align: center;
+      }
       p.subtitle {
         font-weight: 700;
       }
