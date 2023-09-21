@@ -298,7 +298,10 @@ const DashBoard = () => {
                 <h2>Current notes</h2>
                 <div className="current-notes-container notes-container">
                   {userNotes.map((note, index) => (
-                    <div key={index} className="note-container">
+                    <div
+                      key={index}
+                      className="note-container col-xl-3 col-md-6 col-xs-12"
+                    >
                       <div className="note-header">
                         <input
                           type="text"

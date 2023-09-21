@@ -129,8 +129,10 @@
   .current-notes-container {
     display: flex;
     flex-wrap: wrap;
+    @include respond-to('small') {
+      justify-content: center;
+    }
     .note-container {
-      width: 20%;
       margin-bottom: 30px;
       select,
       input,
@@ -174,6 +176,7 @@
           width: 100%;
           background: unset;
           border: unset;
+          text-align: center;
         }
         .options-container {
           position: relative;
