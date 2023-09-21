@@ -12,6 +12,9 @@ body {
   }
   .section {
     margin: 300px 0;
+    @include respond-to('medium') {
+      margin: 150px 0;
+    }
   }
   h1 {
     font-family: $font2;
@@ -48,10 +51,7 @@ body {
       background-color: $color-orange;
     }
     @include respond-to('medium') {
-      font-size: 25px;
-    }
-    @include respond-to('small') {
-      font-size: 20px;
+      font-size: 28px;
     }
   }
 

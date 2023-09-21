@@ -11,6 +11,13 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    .logo {
+      img {
+        @include respond-to('xsmall') {
+          width: 75%;
+        }
+      }
+    }
     .dk-nav {
       position: relative;
       ul {

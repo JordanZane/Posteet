@@ -11,6 +11,11 @@
       padding-right: 50px;
     }
   }
+  .img-container {
+    @include respond-to('medium') {
+      margin-top: 50px;
+    }
+  }
   .about {
     p span {
       color: $color-orange;
@@ -38,6 +43,20 @@
       }
     }
   }
+
+  .productivity {
+    .img-container {
+      @include respond-to('medium') {
+        order: 2;
+      }
+    }
+    .text-content {
+      @include respond-to('medium') {
+        order: 1;
+      }
+    }
+  }
+
   .contact {
     padding: 50px 0;
     background-color: $color-orange-2;
@@ -52,6 +71,9 @@
       background-size: 400px;
       width: 400px;
       height: 328px;
+      @include respond-to('medium') {
+        content: none;
+      }
     }
     .text-content {
       p.subtitle {
