@@ -116,12 +116,19 @@ header {
         align-items: center;
         background-color: $color-white;
         border: 1px solid $color-orange;
-        right: -48px;
+        right: -5px;
         &.active {
           opacity: 1;
-          right: -35px;
+          right: -5px;
           bottom: -140px;
         }
+        button {
+          background-color: $color-red;
+          border-radius: 0;
+        }
+      }
+      li a {
+        font-weight: bold;
       }
     }
   }
