@@ -138,11 +138,14 @@
   .current-notes-container {
     display: flex;
     flex-wrap: wrap;
+    background-color: #fff9f2;
+    padding: 20px 0;
+    border-radius: 12px;
     @include respond-to('small') {
       justify-content: center;
     }
     .note-container {
-      margin-bottom: 30px;
+      margin: 15px 0px;
       select,
       input,
       textarea {
@@ -177,7 +180,8 @@
       .note-content {
         margin: 0px 10px;
         position: relative;
-        border: 1px solid grey;
+        border: 1px solid $color-orange;
+        background-color: $color-white;
         textarea {
           margin: 0;
           padding: 20px 8px;
