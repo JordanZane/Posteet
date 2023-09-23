@@ -9,8 +9,15 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      @include respond-to('medium') {
+        flex-direction: column;
+      }
       button:first-child {
         margin-right: 15px;
+        @include respond-to('medium') {
+          margin-right: 0;
+          margin-bottom: 10px;
+        }
       }
     }
 

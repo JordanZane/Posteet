@@ -83,6 +83,7 @@ header {
     }
     .sm-nav {
       display: none;
+      position: relative;
       @include respond-to('small') {
         display: block;
       }
@@ -118,8 +119,8 @@ header {
         right: -48px;
         &.active {
           opacity: 1;
-          right: 65px;
-          bottom: -110px;
+          right: -35px;
+          bottom: -140px;
         }
       }
     }
