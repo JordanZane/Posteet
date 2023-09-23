@@ -14,11 +14,15 @@ header {
     @include respond-to('small') {
       padding: 0 10px;
     }
-    .logo {
-      img {
-        @include respond-to('xsmall') {
-          width: 75%;
-        }
+    .logo-dk {
+      @include respond-to('xsmall') {
+        display: none;
+      }
+    }
+    .logo-sm {
+      display: none;
+      @include respond-to('xsmall') {
+        display: initial;
       }
     }
     .dk-nav {

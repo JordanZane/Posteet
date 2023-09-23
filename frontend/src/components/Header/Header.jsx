@@ -6,6 +6,7 @@ import {
   LogoutButton,
 } from '../StyledComponents/LogoutConfirm';
 import Logo from '../../assets/images/logo.svg';
+import LogoSm from '../../assets/images/logo-sm.svg';
 
 const Header = ({ isLogged, setIsLogged }) => {
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -44,9 +45,14 @@ const Header = ({ isLogged, setIsLogged }) => {
         <div className="row">
           <div className="col-lg-12">
             <div className="header-content">
-              <div className="logo">
+              <div className="logo-dk">
                 <Link to="/">
                   <img src={Logo} alt="Posteet" />
+                </Link>
+              </div>
+              <div className="logo-sm">
+                <Link to="/">
+                  <img src={LogoSm} alt="Posteet" />
                 </Link>
               </div>
               <nav className="dk-nav">
