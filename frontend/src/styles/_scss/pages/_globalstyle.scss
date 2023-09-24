@@ -122,7 +122,8 @@ body {
   border-radius: 9px;
   position: relative;
   z-index: 1;
-  &::after {
+  overflow: hidden;
+  &::before {
     content: '';
     position: absolute;
     right: -14px;
@@ -136,12 +137,20 @@ body {
     @include transition(0.2s);
     pointer-events: none;
   }
+
   &:hover {
     color: $color-white;
     background-color: $color-orange;
-    &::after {
+    &::before {
       right: 0;
       bottom: 0;
+      z-index: -1;
+      transform: translate(0);
+    }
+  }
+  @supports (-moz-appearance: none) {
+    &::before {
+      display: none;
     }
   }
 }

@@ -91,11 +91,11 @@ const Home = ({ isLogged }) => {
                 <div className="btn-container">
                   {isLogged ? (
                     <Link to={`/dashboard/${userId}`} className="btn-style">
-                      Go to your dashboard
+                      <span>Go to your dashboard</span>
                     </Link>
                   ) : (
                     <Link to="/sign-up" className="btn-style">
-                      Sign-up for free
+                      <span> Sign-up for free</span>
                     </Link>
                   )}
                 </div>
