@@ -61,7 +61,6 @@ const LoginForm = ({ setIsLogged }) => {
 
   const handleSubmitResetPw = (e) => {
     e.preventDefault();
-    const email = userEmail;
 
     const headers = {
       'Content-Type': 'application/json',
@@ -72,10 +71,10 @@ const LoginForm = ({ setIsLogged }) => {
       return;
     }
 
-    fetch(`http://localhost:4200/reset-pw-email`, {
+    fetch(`http://localhost:4200/send-email/reset-pw`, {
       method: 'POST',
       headers: headers,
-      body: JSON.stringify(email),
+      body: JSON.stringify({ email: userEmail }),
     })
       .then((response) => {
         if (response.ok) {
@@ -84,12 +83,12 @@ const LoginForm = ({ setIsLogged }) => {
           setUserEmail('');
         } else {
           console.log('Error when sending email');
-          alert('Error when sending email');
+          alert('Adresse email non trouvée');
         }
       })
       .catch((error) => {
         console.log('Error when sending email :', error);
-        alert('Error when sending email');
+        alert('Adresse email non trouvée');
       });
   };
 
@@ -109,7 +108,7 @@ const LoginForm = ({ setIsLogged }) => {
                   <form onSubmit={handleSubmitResetPw}>
                     <label htmlFor="resetPwEmail">E-mail*</label>
                     <input
-                      type="text"
+                      type="email"
                       name="resetPwEmail"
                       id="resetPwEmail"
                       onChange={(e) => setUserEmail(e.target.value)}
