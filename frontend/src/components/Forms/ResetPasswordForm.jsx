@@ -21,7 +21,7 @@ const ResetPasswordForm = () => {
                     id="confirmPassword"
                   />
                   <div className="btn-container">
-                    <input className="btn" type="submit" value="Confirm" />
+                    <input className="btn" type="submit" value="Confirmer" />
                   </div>
                 </form>
                 <p className="required">*Requis</p>
