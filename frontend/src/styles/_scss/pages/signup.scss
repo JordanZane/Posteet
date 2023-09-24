@@ -3,4 +3,16 @@
   @include respond-to('small') {
     margin-top: 200px;
   }
+  .form-container {
+    p span {
+      cursor: pointer;
+      color: $color-orange;
+      text-decoration: underline;
+    }
+    .btn-container {
+      .btn {
+        margin: 0 7.5px;
+      }
+    }
+  }
 }

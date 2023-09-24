@@ -67,6 +67,11 @@ const LoginForm = ({ setIsLogged }) => {
       'Content-Type': 'application/json',
     };
 
+    if (!userEmail) {
+      alert('Renseignez votre e-mail');
+      return;
+    }
+
     fetch(`http://localhost:4200/reset-pw-email`, {
       method: 'POST',
       headers: headers,
