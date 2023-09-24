@@ -9,8 +9,7 @@ const Footer = () => {
           <div className="col-lg-12">
             <p className="content">
               © 2023 Posteet All rights reserved -{' '}
-              <Link to={'/legal'}>Legal</Link> -{' '}
-              <Link to={'/cookies'}>Cookies</Link>
+              <Link to={'/legal'}>Legal</Link>
             </p>
           </div>
         </div>

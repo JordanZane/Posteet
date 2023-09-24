@@ -9,6 +9,8 @@ import LoginForm from './components/Forms/loginForm';
 import ResetPasswordForm from './components/Forms/ResetPasswordForm';
 import DashBoard from './components/Pages/DashBoard';
 import Account from './components/Pages/Account';
+import Legal from './components/Pages/Legal';
+
 import './styles/_scss/styles.scss';
 
 function App() {
@@ -25,6 +27,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home isLogged={isLogged} />} />
         <Route path="/sign-up" element={<SignupForm />} />
+        <Route path="/legal" element={<Legal />} />
         <Route
           path="/log-in"
           element={<LoginForm setIsLogged={setIsLogged} />}
