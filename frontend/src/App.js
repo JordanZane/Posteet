@@ -32,7 +32,7 @@ function App() {
           path="/log-in"
           element={<LoginForm setIsLogged={setIsLogged} />}
         />
-        <Route path="/reset-password" element={<ResetPasswordForm />} />
+        <Route path="/reset-password/:userId" element={<ResetPasswordForm />} />
         {isLogged ? (
           <Route
             path="/dashboard/:userId"

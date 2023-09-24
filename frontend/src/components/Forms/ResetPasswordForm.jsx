@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
+import { useParams } from 'react-router-dom';
 
 const ResetPasswordForm = () => {
+  const { userId } = useParams();
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
+  const navigate = useNavigate();
 
   const resetPassword = (e) => {
     e.preventDefault();
-    const userId = localStorage.getItem('userId');
     const token = localStorage.getItem('token');
     const headers = {
       'Content-Type': 'application/json',
@@ -28,7 +31,7 @@ const ResetPasswordForm = () => {
       return;
     }
 
-    fetch(`http://localhost:4200/users/reset-pw/${userId}`, {
+    fetch(`http://localhost:4200/users/reset-pw-email/${userId}`, {
       method: 'POST',
       headers: headers,
       body: JSON.stringify(data),
@@ -36,6 +39,7 @@ const ResetPasswordForm = () => {
       .then((response) => {
         if (response.ok) {
           alert('Mot de passe modifié avec succès');
+          navigate(`/log-in`);
         } else {
           alert(
             'Problème lors de la modification du mot de passe. Vérifiez vos saisies'

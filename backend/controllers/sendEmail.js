@@ -66,6 +66,8 @@ exports.sendEmailResetPw = (req, res, next) => {
 
         /* Definir transporter avec nodeMailer + options (envoi from posteet to email user) */
       } else {
+        const userId = user._id;
+
         const transporter = nodemailer.createTransport({
           host: smtpServer,
           port: smtpPort,
@@ -80,7 +82,7 @@ exports.sendEmailResetPw = (req, res, next) => {
           from: outlookEmail,
           to: email,
           subject: 'POSTEET : Demande de rénitialisation de mot de passe',
-          text: `Veuillez cliquer sur ce lien pour rénitialiser votre mot de passe`,
+          html: `<p>Cliquez <a href="http://localhost:3000/reset-password/${userId}">ici</a> pour réinitialiser votre mot de passe</p>`,
         };
 
         /*Send mail + message reussite ou error */

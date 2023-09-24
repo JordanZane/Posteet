@@ -98,6 +98,34 @@ exports.resetPassword = (req, res, next) => {
     });
 };
 
+exports.resetPasswordFromEmail = (req, res, next) => {
+  console.log('reset-pw called from email');
+  const userId = req.params.userId;
+  const { newPassword, confirmNewPassword } = req.body;
+  User.findById(userId)
+    .then((user) => {
+      console.log('User found:', user);
+
+      if (newPassword !== confirmNewPassword) {
+        console.log('Les Mots de passe ne correspondent pas');
+        res
+          .status(401)
+          .json({ message: 'Les Mots de passe ne correspondent pas' });
+      } else {
+        bcrypt.hash(confirmNewPassword, 10).then((hashedNewPassword) => {
+          user.password = hashedNewPassword;
+          user.save().then(() => {
+            console.log('Mot de passe modifié');
+            res.status(200).json({ message: 'Mot de passe modifié' });
+          });
+        });
+      }
+    })
+    .catch((error) => {
+      res.status(500).json({ error });
+    });
+};
+
 exports.deleteAccount = (req, res, next) => {
   console.log('Delete account route called');
   const userId = req.params.userId;
