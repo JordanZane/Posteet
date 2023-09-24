@@ -54,16 +54,16 @@ const LoginForm = ({ setIsLogged }) => {
           <div className="row">
             <div className="col-lg-12">
               <div className="form-container" id="login-form">
-                <h2>Log-in</h2>
+                <h2>Connexion</h2>
                 <form onSubmit={handleSubmit}>
-                  <label htmlFor="username">Username*</label>
+                  <label htmlFor="username">Nom utilisateur*</label>
                   <input
                     type="text"
                     name="username"
                     id="username"
                     onChange={handleChange}
                   />
-                  <label htmlFor="password">Password*</label>
+                  <label htmlFor="password">Mot de passe*</label>
                   <input
                     type="password"
                     name="password"
@@ -75,14 +75,15 @@ const LoginForm = ({ setIsLogged }) => {
                   </div>
                 </form>
                 <p>
-                  Forget Your password ? <a href="mailto:">Reset password</a>
+                  Mot de passe oublier ?{' '}
+                  <a href="mailto:">Rénitialiser mot de passe</a>
                 </p>
-                <p className="required">*Required</p>
+                <p className="required">*Requis</p>
               </div>
               <div className="form-container" id="reset-pw-form-container">
-                <h2>Reset password</h2>
+                <h2>Rénitialiser mot de passe</h2>
                 <form>
-                  <label htmlFor="email">Email*</label>
+                  <label htmlFor="email">E-mail*</label>
                   <input type="email" name="email" id="email" />
                 </form>
               </div>

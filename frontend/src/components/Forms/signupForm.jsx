@@ -65,9 +65,9 @@ const SignupForm = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="form-container" id="signup-form-container">
-                <h2>Sign-up</h2>
+                <h2>Inscription</h2>
                 <form onSubmit={handleSubmit}>
-                  <label htmlFor="username">Username*</label>
+                  <label htmlFor="username">Nom utilisateur*</label>
                   <input
                     type="text"
                     name="username"
@@ -75,7 +75,7 @@ const SignupForm = () => {
                     value={formData.username}
                     onChange={handlechange}
                   />
-                  <label htmlFor="email">Email*</label>
+                  <label htmlFor="email">E-mail*</label>
                   <input
                     type="email"
                     name="email"
@@ -83,7 +83,7 @@ const SignupForm = () => {
                     value={formData.email}
                     onChange={handlechange}
                   />
-                  <label htmlFor="password">Password*</label>
+                  <label htmlFor="password">Mot de passe*</label>
                   <input
                     type="password"
                     name="password"
@@ -91,7 +91,9 @@ const SignupForm = () => {
                     value={formData.password}
                     onChange={handlechange}
                   />
-                  <label htmlFor="confirmPassword">Confirm password*</label>
+                  <label htmlFor="confirmPassword">
+                    Confirmer mot de passe*
+                  </label>
                   <input
                     type="password"
                     name="confirmPassword"
@@ -104,10 +106,9 @@ const SignupForm = () => {
                   </div>
                 </form>
                 <p>
-                  Already have an account ?{' '}
-                  <NavLink to="/log-in">Log-in</NavLink>
+                  Déja un compte ? <NavLink to="/log-in">Connexion</NavLink>
                 </p>
-                <p className="required">*Required</p>
+                <p className="required">*Requis</p>
               </div>
               <div
                 className="form-container hide"

@@ -58,12 +58,14 @@ const Header = ({ isLogged, setIsLogged }) => {
               <nav className="dk-nav">
                 <ul>
                   <li>
-                    <NavLink to="/">Home</NavLink>
+                    <NavLink to="/">Accueil</NavLink>
                   </li>
                   {isLogged ? (
                     <>
                       <li>
-                        <NavLink to={`/dashboard/${userId}`}>Dashboard</NavLink>
+                        <NavLink to={`/dashboard/${userId}`}>
+                          Tableau de bord
+                        </NavLink>
                       </li>
                       <li>
                         <button onClick={HandleSubNav}>
@@ -71,9 +73,8 @@ const Header = ({ isLogged, setIsLogged }) => {
                         </button>
                         <ul id="subnav">
                           <li>
-                            <Link to={`/my-account/${userId}`}>My account</Link>
+                            <Link to={`/my-account/${userId}`}>Mon compte</Link>
                           </li>
-                          <li>Dark Mode</li>
                           <li>
                             <button onClick={handleLogout}>Déconnexion</button>
                           </li>
@@ -82,9 +83,9 @@ const Header = ({ isLogged, setIsLogged }) => {
                     </>
                   ) : (
                     <li className="link-container">
-                      <NavLink to="/sign-up">Sign-up</NavLink>
+                      <NavLink to="/sign-up">Inscription</NavLink>
                       {' / '}
-                      <NavLink to="/log-in">Log-in</NavLink>
+                      <NavLink to="/log-in">Connexion</NavLink>
                     </li>
                   )}
                 </ul>
@@ -99,7 +100,9 @@ const Header = ({ isLogged, setIsLogged }) => {
                   {isLogged ? (
                     <>
                       <li>
-                        <NavLink to={`/dashboard/${userId}`}>Dashboard</NavLink>
+                        <NavLink to={`/dashboard/${userId}`}>
+                          Tableau de bord
+                        </NavLink>
                       </li>
                       <li>
                         <button onClick={HandleSubNavSm}>
@@ -107,7 +110,7 @@ const Header = ({ isLogged, setIsLogged }) => {
                         </button>
                         <ul id="subnav-sm">
                           <li>
-                            <Link to={`/my-account/${userId}`}>My account</Link>
+                            <Link to={`/my-account/${userId}`}>Mon compte</Link>
                           </li>
                           <li>Dark Mode</li>
                           <li>
@@ -118,9 +121,9 @@ const Header = ({ isLogged, setIsLogged }) => {
                     </>
                   ) : (
                     <li className="link-container">
-                      <NavLink to="/sign-up">Sign-up</NavLink>
+                      <NavLink to="/sign-up">Inscription</NavLink>
                       {' / '}
-                      <NavLink to="/log-in">Log-in</NavLink>
+                      <NavLink to="/log-in">Connexion</NavLink>
                     </li>
                   )}
                 </ul>

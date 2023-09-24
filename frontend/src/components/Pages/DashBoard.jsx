@@ -258,28 +258,28 @@ const DashBoard = () => {
             <div className="row">
               <div className="col-lg-12">
                 <h1>
-                  Create your note{' '}
+                  Créer votre note{' '}
                   <div className="btn-round" onClick={handleAddNoteForm}>
                     <i className="fa-solid fa-plus"></i>
                   </div>
                 </h1>
                 <div className="sort-btns-container">
-                  <label htmlFor="sortSelect">Sort by :</label>
+                  <label htmlFor="sortSelect">Trier par :</label>
                   <select
                     id="sortSelect"
                     value={selectedSort}
                     onChange={handleSortChange}
                   >
-                    <option value="asc">Oldest</option>
-                    <option value="desc">Newest</option>
+                    <option value="asc">Plus vieux</option>
+                    <option value="desc">Plus récent</option>
                     <option value="importance">Importance</option>
                   </select>
                 </div>
 
                 <form id="addNote-form">
-                  <label htmlFor="title">Title</label>
+                  <label htmlFor="title">Titre</label>
                   <input type="text" id="title" name="title" />
-                  <label htmlFor="content">Content</label>
+                  <label htmlFor="content">Contenu</label>
                   <textarea
                     name="content"
                     id="content"
@@ -295,7 +295,7 @@ const DashBoard = () => {
           <div className="container">
             <div className="row">
               <div className="col-lg-12">
-                <h2>Current notes</h2>
+                <h2>Notes actuelles</h2>
                 <div className="current-notes-container notes-container">
                   {userNotes.map((note, index) => (
                     <div
@@ -360,18 +360,20 @@ const DashBoard = () => {
                       {deleteNoteConfirm && deleteIndex === index && (
                         <div className="overlay-popup">
                           <div className="delete-note-popup">
-                            <h3>Are you sure you want to delete this note ?</h3>
+                            <h3>
+                              Êtes vous sûr de vouloir supprimmer cette note ?
+                            </h3>
                             <button
                               className="btn btn-green"
                               onClick={() => deleteUserNote(deleteIndex)}
                             >
-                              Confirm
+                              Confirmer
                             </button>
                             <button
                               className="btn btn-red"
                               onClick={() => setDeleteNoteConfirm(false)}
                             >
-                              Cancel
+                              Annuler
                             </button>
                           </div>
                         </div>
@@ -387,8 +389,8 @@ const DashBoard = () => {
 
       <div id="add-note-form">
         <form className="form-container">
-          <h2>Add your note</h2>
-          <label htmlFor="title">Title :</label>
+          <h2>Créer votre note</h2>
+          <label htmlFor="title">Titre :</label>
           <input
             type="text"
             name="title"
@@ -396,7 +398,7 @@ const DashBoard = () => {
             value={titleNote}
             onChange={(e) => setTitleNote(e.target.value)}
           />
-          <label htmlFor="content">Content :</label>
+          <label htmlFor="content">Contenu :</label>
           <textarea
             name="content"
             id="content"
@@ -424,7 +426,7 @@ const DashBoard = () => {
               Ok
             </button>
             <button className="btn btn-red" onClick={handleAddNoteForm}>
-              Cancel
+              Annuler
             </button>
           </div>
         </form>

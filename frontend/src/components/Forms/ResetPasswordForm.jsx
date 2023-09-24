@@ -8,11 +8,13 @@ const ResetPasswordForm = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="form-container">
-                <h2>Reset password</h2>
+                <h2>Rénitialiser mot de passe</h2>
                 <form>
-                  <label htmlFor="password">New password*</label>
+                  <label htmlFor="password">Nouveau mot de passe*</label>
                   <input type="password" name="password" id="password" />
-                  <label htmlFor="confirmPassword">Confirm new password*</label>
+                  <label htmlFor="confirmPassword">
+                    Confirmer nouveau mot de passe*
+                  </label>
                   <input
                     type="password"
                     name="confirmPassword"
@@ -22,7 +24,7 @@ const ResetPasswordForm = () => {
                     <input className="btn" type="submit" value="Confirm" />
                   </div>
                 </form>
-                <p className="required">*Required</p>
+                <p className="required">*Requis</p>
               </div>
             </div>
           </div>

@@ -82,20 +82,20 @@ const Home = ({ isLogged }) => {
           <div className="container">
             <div className="row">
               <div className="col-lg-6 text-content">
-                <h2>About</h2>
+                <h2>A propos</h2>
                 <p>
-                  Welcome to <span>Posteet</span>, your web application for note
-                  creation which offers a user-friendly platform to manage and
-                  organize your digital post-it notes.
+                  Bienvenue sur <span>Posteet</span>, votre application web de
+                  création de notes qui offre une plateforme conviviale pour
+                  gérer et organiser vos post-it numériques.
                 </p>
                 <div className="btn-container">
                   {isLogged ? (
                     <Link to={`/dashboard/${userId}`} className="btn-style">
-                      <span>Go to your dashboard</span>
+                      <span>Tableau de bord</span>
                     </Link>
                   ) : (
                     <Link to="/sign-up" className="btn-style">
-                      <span> Sign-up for free</span>
+                      <span>Inscription gratuite</span>
                     </Link>
                   )}
                 </div>
@@ -114,13 +114,13 @@ const Home = ({ isLogged }) => {
                 <img src={aboutImg} alt="Posteet - about" />
               </div>
               <div className="col-lg-6 text-content">
-                <h2>Boost your productivity</h2>
+                <h2>Boostez votre productivité</h2>
                 <p>
-                  With Posteet, you can easily register an account and dive into
-                  a world of efficient note-taking. Whether it's jotting down
-                  quick reminders, brainstorming ideas, or organizing your
-                  tasks, Posteet empowers you to create, edit, and prioritize
-                  your notes with utmost convenience.
+                  Avec Posteet, vous pouvez facilement créer un compte et
+                  plonger dans un monde de prise de notes efficace. Que ce soit
+                  pour prendre rapidement des rappels, générer des idées ou
+                  organiser vos tâches, Posteet vous permet de créer, modifier
+                  et prioriser vos notes avec la plus grande commodité.
                 </p>
               </div>
             </div>
@@ -130,14 +130,10 @@ const Home = ({ isLogged }) => {
           <div className="container">
             <div className="row">
               <div className="col-lg-6 text-content">
-                <h2>Manage your notes</h2>
+                <h2>Gérer vos notes</h2>
                 <p>
-                  Stay on top of your to-do list by assigning importance levels
-                  to your notes, ensuring that your most critical tasks are
-                  never overlooked. Need a little nudge to keep things on track?
-                  Posteet has you covered with customizable reminders, allowing
-                  you to set timely alerts for important deadlines or
-                  appointments.
+                  Attribuer des niveaux d'importance à vos notes, garantissant
+                  que vos tâches les plus cruciales ne sont jamais négligées.
                 </p>
               </div>
               <div className="col-lg-6 img-container">
@@ -160,18 +156,20 @@ const Home = ({ isLogged }) => {
           <div className="container">
             <div className="row">
               <div className="col-lg-6 text-content">
-                <h2>Contact</h2>
+                <h2>Contactez-nous</h2>
                 <p className="subtitle">
-                  You have questions, suggestions, or need further assistance ?
+                  Vous avez des questions, des suggestions ou besoin d'une
+                  assistance supplémentaire ?
                 </p>
                 <p>
-                  Feel free to reach out to us for any additional information or
-                  inquiries. Simply fill out the form below. We value your
-                  feedback and strive to provide the best possible experience
-                  for our users.
+                  N'hésitez pas à nous contacter pour toute information
+                  complémentaire ou demande. Il vous suffit de remplir le
+                  formulaire ci-dessous. Vos retours sont précieux pour nous, et
+                  nous nous efforçons de fournir la meilleure expérience
+                  possible à nos utilisateurs.
                 </p>
                 <form onSubmit={handleSubmitForm}>
-                  <label htmlFor="email">Email*</label>
+                  <label htmlFor="email">E-mail*</label>
                   <input
                     type="email"
                     id="email"
@@ -195,7 +193,7 @@ const Home = ({ isLogged }) => {
                       {submitting ? 'Envoi en cours' : 'Envoyer'}
                     </button>
                   </div>
-                  <p>*Required fields</p>
+                  <p>*Champs requis</p>
                 </form>
               </div>
             </div>
