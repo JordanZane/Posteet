@@ -150,8 +150,6 @@ const DashBoard = () => {
     })
       .then((response) => {
         if (response.ok) {
-          console.log('Note créer');
-          alert('Note créer');
           setTitleNote('');
           setContentNote('');
           setImportanceNote('normale');

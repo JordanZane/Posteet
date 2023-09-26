@@ -55,7 +55,6 @@ exports.sendEmailResetPw = (req, res, next) => {
   console.log('Send Mail Reset Pw User route called');
   const email = req.body.email;
 
-  /* Verification sur email user : Format email + Champs vide, Presence dans BDD */
   if (!validator.isEmail(email) && validator.isEmpty(email)) {
     return res.status(400).json({ message: 'Adresse email invalide' });
   }
@@ -63,8 +62,6 @@ exports.sendEmailResetPw = (req, res, next) => {
     .then((user) => {
       if (user === null) {
         res.status(401).json({ message: 'Adresse email introuvable' });
-
-        /* Definir transporter avec nodeMailer + options (envoi from posteet to email user) */
       } else {
         const userId = user._id;
 
@@ -85,7 +82,6 @@ exports.sendEmailResetPw = (req, res, next) => {
           html: `<p>Cliquez <a href="http://localhost:3000/reset-password/${userId}">ici</a> pour réinitialiser votre mot de passe</p>`,
         };
 
-        /*Send mail + message reussite ou error */
         const info = transporter.sendMail(mailOptions);
         console.log('Email envoyé :', info.response);
         res.status(200).json({

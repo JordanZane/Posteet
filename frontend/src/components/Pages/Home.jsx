@@ -1,23 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+
 import LoadingScreen from '../LoadingScreen/LoadingScreen';
 
-import aboutImg from '../../assets/images/about-img.png';
+import aboutImg from '../../assets/images/about-img.svg';
+import submitImg from '../../assets/images/submit-img.svg';
 
 const Home = ({ isLogged }) => {
-  const sliderSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-  };
-
   const [userEmail, setUserEmail] = useState('');
   const [userMessage, setUserMessage] = useState('');
   const [submitting, setSubmitting] = useState(false);
@@ -88,6 +77,10 @@ const Home = ({ isLogged }) => {
                   création de notes qui offre une plateforme conviviale pour
                   gérer et organiser vos post-it numériques.
                 </p>
+                <p>
+                  Avec Posteet, vous pouvez facilement créer un compte et
+                  plonger dans un monde de prise de notes efficace
+                </p>
                 <div className="btn-container">
                   {isLogged ? (
                     <Link to={`/dashboard/${userId}`} className="btn-style">
@@ -101,7 +94,7 @@ const Home = ({ isLogged }) => {
                 </div>
               </div>
               <div className="col-lg-6 img-container">
-                <img src={aboutImg} alt="Posteet - about" />
+                <img src={submitImg} alt="Posteet - about" />
               </div>
             </div>
           </div>
@@ -116,42 +109,15 @@ const Home = ({ isLogged }) => {
               <div className="col-lg-6 text-content">
                 <h2>Boostez votre productivité</h2>
                 <p>
-                  Avec Posteet, vous pouvez facilement créer un compte et
-                  plonger dans un monde de prise de notes efficace. Que ce soit
-                  pour prendre rapidement des rappels, générer des idées ou
-                  organiser vos tâches, Posteet vous permet de créer, modifier
-                  et prioriser vos notes avec la plus grande commodité.
+                  Que ce soit pour générer des idées ou organiser vos tâches,
+                  Posteet vous permet de créer, modifier et prioriser vos notes
+                  avec la plus grande commodité.
                 </p>
               </div>
             </div>
           </div>
         </section>
-        <section className="management section odd-section">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-6 text-content">
-                <h2>Gérer vos notes</h2>
-                <p>
-                  Attribuer des niveaux d'importance à vos notes, garantissant
-                  que vos tâches les plus cruciales ne sont jamais négligées.
-                </p>
-              </div>
-              <div className="col-lg-6 img-container">
-                <Slider {...sliderSettings}>
-                  <div className="slide">
-                    <img src={aboutImg} alt="slide-img" />
-                  </div>
-                  <div className="slide">
-                    <img src={aboutImg} alt="slide-img" />
-                  </div>
-                  <div className="slide">
-                    <img src={aboutImg} alt="slide-img" />
-                  </div>
-                </Slider>
-              </div>
-            </div>
-          </div>
-        </section>
+
         <section className="contact section">
           <div className="container">
             <div className="row">
