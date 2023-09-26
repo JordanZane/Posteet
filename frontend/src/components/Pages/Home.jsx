@@ -11,8 +11,7 @@ const Home = ({ isLogged }) => {
   const [userMessage, setUserMessage] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [loading, setLoading] = useState(true);
-  const URLDev = process.env.REACT_APP_URLDev;
-  const URLProd = process.env.REACT_APP_URLProd;
+  const URLDev = process.env.REACT_APP_URL;
   const userId = localStorage.getItem('userId');
 
   const handleSubmitForm = (e) => {

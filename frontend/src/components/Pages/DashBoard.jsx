@@ -13,8 +13,7 @@ const DashBoard = () => {
   const [deleteIndex, setDeleteIndex] = useState(null);
   const [loading, setLoading] = useState(true);
   const titleRefs = useRef([]);
-  const URLDev = process.env.REACT_APP_URLDev;
-  const URLProd = process.env.REACT_APP_URLProd;
+  const URLDev = process.env.REACT_APP_URL;
 
   const handleAddNoteForm = (e) => {
     e.preventDefault();

@@ -11,8 +11,7 @@ const LoginForm = ({ setIsLogged }) => {
 
   const [showResetPwForm, setShowResetPwForm] = useState(false);
 
-  const URLDev = process.env.REACT_APP_URLDev;
-  const URLProd = process.env.REACT_APP_URLProd;
+  const URLDev = process.env.REACT_APP_URL;
 
   const handleChange = (e) => {
     const { name, value } = e.target;

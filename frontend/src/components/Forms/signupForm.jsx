@@ -9,8 +9,7 @@ const SignupForm = () => {
     confirmPassword: '',
   });
 
-  const URLDev = process.env.REACT_APP_URLDev;
-  const URLProd = process.env.REACT_APP_URLProd;
+  const URLDev = process.env.REACT_APP_URL;
 
   const handlechange = (e) => {
     const { name, value } = e.target;
