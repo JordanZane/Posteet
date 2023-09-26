@@ -7,6 +7,8 @@ const ResetPasswordForm = () => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
   const navigate = useNavigate();
+  const URLDev = process.env.REACT_APP_URLDev;
+  const URLProd = process.env.REACT_APP_URLProd;
 
   const resetPassword = (e) => {
     e.preventDefault();
@@ -31,7 +33,7 @@ const ResetPasswordForm = () => {
       return;
     }
 
-    fetch(`http://localhost:4200/users/reset-pw-email/${userId}`, {
+    fetch(`${URLDev}/users/reset-pw-email/${userId}`, {
       method: 'POST',
       headers: headers,
       body: JSON.stringify(data),

@@ -11,6 +11,9 @@ const LoginForm = ({ setIsLogged }) => {
 
   const [showResetPwForm, setShowResetPwForm] = useState(false);
 
+  const URLDev = process.env.REACT_APP_URLDev;
+  const URLProd = process.env.REACT_APP_URLProd;
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevdata) => ({ ...prevdata, [name]: value }));
@@ -19,7 +22,7 @@ const LoginForm = ({ setIsLogged }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch('http://localhost:4200/login', {
+    fetch(`${URLDev}/login`, {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
@@ -71,7 +74,7 @@ const LoginForm = ({ setIsLogged }) => {
       return;
     }
 
-    fetch(`http://localhost:4200/send-email/reset-pw`, {
+    fetch(`${URLDev}/send-email/reset-pw`, {
       method: 'POST',
       headers: headers,
       body: JSON.stringify({ email: userEmail }),

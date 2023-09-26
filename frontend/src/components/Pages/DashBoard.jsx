@@ -13,6 +13,8 @@ const DashBoard = () => {
   const [deleteIndex, setDeleteIndex] = useState(null);
   const [loading, setLoading] = useState(true);
   const titleRefs = useRef([]);
+  const URLDev = process.env.REACT_APP_URLDev;
+  const URLProd = process.env.REACT_APP_URLProd;
 
   const handleAddNoteForm = (e) => {
     e.preventDefault();
@@ -95,7 +97,7 @@ const DashBoard = () => {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     };
-    fetch(`http://localhost:4200/notes/${userId}`, {
+    fetch(`${URLDev}/notes/${userId}`, {
       method: 'GET',
       headers: headers,
     })
@@ -143,7 +145,7 @@ const DashBoard = () => {
       importanceNote: importanceNote,
     };
 
-    fetch(`http://localhost:4200/notes/${userId}`, {
+    fetch(`${URLDev}/notes/${userId}`, {
       method: 'POST',
       headers: headers,
       body: JSON.stringify(data),
@@ -189,7 +191,7 @@ const DashBoard = () => {
       return;
     }
 
-    fetch(`http://localhost:4200/notes/${userId}/${updatedNote._id}`, {
+    fetch(`${URLDev}/notes/${userId}/${updatedNote._id}`, {
       method: 'PUT',
       headers: headers,
       body: JSON.stringify({
@@ -226,7 +228,7 @@ const DashBoard = () => {
       Authorization: `Bearer ${token}`,
     };
 
-    fetch(`http://localhost:4200/notes/${userId}/${deletedNote._id}`, {
+    fetch(`${URLDev}/notes/${userId}/${deletedNote._id}`, {
       method: 'DELETE',
       headers: headers,
     })

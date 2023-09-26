@@ -8,6 +8,8 @@ const Account = ({ setIsLogged }) => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
   const navigate = useNavigate();
+  const URLDev = process.env.REACT_APP_URLDev;
+  const URLProd = process.env.REACT_APP_URLProd;
 
   useEffect(() => {
     const getUser = async () => {
@@ -18,7 +20,7 @@ const Account = ({ setIsLogged }) => {
         Authorization: `Bearer ${token}`,
       };
 
-      fetch(`http://localhost:4200/users/${userId}`, {
+      fetch(`${URLDev}/users/${userId}`, {
         method: 'GET',
         headers: headers,
       })
@@ -79,7 +81,7 @@ const Account = ({ setIsLogged }) => {
       return;
     }
 
-    fetch(`http://localhost:4200/users/reset-pw/${userId}`, {
+    fetch(`${URLDev}/users/reset-pw/${userId}`, {
       method: 'POST',
       headers: headers,
       body: JSON.stringify(data),
@@ -126,7 +128,7 @@ const Account = ({ setIsLogged }) => {
       password: password,
     };
 
-    fetch(`http://localhost:4200/users/delete-account/${userId}`, {
+    fetch(`${URLDev}/users/delete-account/${userId}`, {
       method: 'DELETE',
       headers: headers,
       body: JSON.stringify(data),

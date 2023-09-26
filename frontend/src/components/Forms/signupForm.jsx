@@ -9,6 +9,9 @@ const SignupForm = () => {
     confirmPassword: '',
   });
 
+  const URLDev = process.env.REACT_APP_URLDev;
+  const URLProd = process.env.REACT_APP_URLProd;
+
   const handlechange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
@@ -29,7 +32,7 @@ const SignupForm = () => {
       alert('Veuillez remplir tout les champs');
       return;
     }
-    fetch('http://localhost:4200/signup', {
+    fetch(`${URLDev}/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

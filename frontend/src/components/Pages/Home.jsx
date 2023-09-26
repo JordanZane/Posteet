@@ -11,7 +11,8 @@ const Home = ({ isLogged }) => {
   const [userMessage, setUserMessage] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [loading, setLoading] = useState(true);
-
+  const URLDev = process.env.REACT_APP_URLDev;
+  const URLProd = process.env.REACT_APP_URLProd;
   const userId = localStorage.getItem('userId');
 
   const handleSubmitForm = (e) => {
@@ -29,7 +30,7 @@ const Home = ({ isLogged }) => {
       'Content-Type': 'application/json',
     };
     setSubmitting(true);
-    fetch(`http://localhost:4200/send-email`, {
+    fetch(`${URLDev}/send-email`, {
       method: 'POST',
       headers: headers,
       body: JSON.stringify(data),
