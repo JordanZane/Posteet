@@ -20,6 +20,7 @@ exports.signup = (req, res, next) => {
         .save()
         .then(() => {
           console.log('user créer : ', user);
+          res.setHeader('Content-Type', 'application/json');
           res.status(201).json({ message: 'user créer' });
         })
         .catch((error) => {
@@ -47,6 +48,7 @@ exports.login = (req, res, next) => {
               message: 'Paire identifiant / mot de passe incorrecte',
             });
           } else {
+            res.setHeader('Content-Type', 'application/json');
             res.status(200).json({
               userId: user._id,
               token: jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {

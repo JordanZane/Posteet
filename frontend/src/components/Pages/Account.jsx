@@ -42,7 +42,7 @@ const Account = ({ setIsLogged }) => {
         });
     };
     getUser();
-  }, []);
+  }, [URLDev]);
 
   const handleShowResetPwForm = () => {
     document.getElementById('reset-pw-form').classList.toggle('active');

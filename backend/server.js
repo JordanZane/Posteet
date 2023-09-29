@@ -1,4 +1,12 @@
 const http = require('http');
+
+const fs = require('fs');
+
+const options = {
+  key: fs.readFileSync('api.posteet.fr_private_key.key'),
+  cert: fs.readFileSync('api.posteet.fr_ssl_certificate.cer'),
+};
+
 const app = require('./app');
 
 const normalizePort = (val) => {
@@ -13,7 +21,7 @@ const normalizePort = (val) => {
   return false;
 };
 
-const port = normalizePort(process.env.PORT || '4200');
+const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 const errorHandler = (error) => {
@@ -21,8 +29,8 @@ const errorHandler = (error) => {
     throw error;
   }
 
-  const adress = server.adress();
-  const bind = typeof adress === 'string' ? 'pipe ' + adress : 'port ' + port;
+  const address = server.address();
+  const bind = typeof address === 'string' ? 'pipe ' + address : 'port ' + port;
 
   switch (error.code) {
     case 'EACCES':
@@ -40,11 +48,13 @@ const errorHandler = (error) => {
 
 const server = http.createServer(app);
 
+server.listen(port, () => {
+  console.log(`Serveur HTTPS en cours d'exécution sur le port ${port}`);
+});
+
 server.on('error', errorHandler);
 server.on('listening', () => {
   const address = server.address();
   const bind = typeof address === 'string' ? 'pipe ' + address : 'port ' + port;
   console.log('Listening on ' + bind);
 });
-
-server.listen(port);

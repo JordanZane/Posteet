@@ -25,11 +25,17 @@ const LoginForm = ({ setIsLogged }) => {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
+        Accept: 'application/json',
       },
       body: JSON.stringify(formdata),
     })
       .then((response) => {
+        console.log('Server response:', response);
+
         if (!response.ok) {
+          response.text().then((errorText) => {
+            console.error('Server error:', errorText);
+          });
           alert('Paire identifiant / mot de passe incorrecte');
           throw new Error('Paire identifiant / mot de passe incorrecte');
         }
