@@ -25,6 +25,3 @@ To use Posteet, simply visit the website at [https://www.posteet.fr](https://www
 ## Contributions
 Contributions to Posteet are welcome! If you find any issues, have suggestions, or want to improve the project, feel free to create pull requests or report issues on GitHub.
 
-## License
-This project is licensed under the [License Name] - see the [LICENSE.md](LICENSE.md) file for details.
-
